@@ -1,0 +1,63 @@
+<!-- module html  -->
+
+<div id="sub-header-container">
+  <h2 id="sub-header">{{ module.sub_text }}</h2>
+</div>
+
+{%require_css%}
+
+<style>
+
+
+  :root {
+    --h2-font-size: 2rem;
+  }
+
+
+  #sub-header-container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 10rem;
+    font-size: var(--h2-font-size);
+    font-family: var(--theme-font-family);
+  }
+
+  #sub-header-container #sub-header {
+    opacity: 0;
+    text-align: center;
+  }
+  #sub-header-container #sub-header.slide {
+    animation:  SlideIn .8s linear 300ms forwards;
+    -webkit-animation:  SlideIn .8s linear 300ms forwards;
+  }
+  
+@keyframes SlideIn{
+
+0%{
+    opacity: 0;
+    transform: translateY(50%);
+    -webkit-transform: translateY(50%);
+    -moz-transform: translateY(50%);
+    -ms-transform: translateY(50%);
+    -o-transform: translateY(50%);
+
+}
+ 
+
+100%{
+    
+    opacity: 1;
+    transform: translateY(0%);
+    -webkit-transform: translateY(0%);
+    -moz-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    -o-transform: translateY(0%);
+}
+}
+
+
+</style>
+
+{%end_require_css%}

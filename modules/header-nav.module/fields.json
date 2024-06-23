@@ -1,0 +1,301 @@
+[
+{
+    "type": "group",
+    "name": "contact_nav",
+    "label": "Header Contact Navigation",
+    "expanded": false,
+    "children": [
+      {
+        "name" : "header_logo",
+        "label" : " Contact Header Logo",
+        "required" : true,
+        "locked" : false,
+        "responsive" : true,
+        "resizable" : false,
+        "show_loading" : false,
+        "type" : "image",
+        "default" : {
+          "size_type" : "exact",
+          "src" : "../../images/logo.png",
+          "alt" : "tshiamiso astronauts logo",
+          "width" : 128,
+          "height" : 128
+        }
+      },
+
+      {
+        "name" : "phone_icon",
+        "label" : "Phone Icon",
+        "required" : true,
+        "locked" : false,
+        "responsive" : true,
+        "resizable" : false,
+        "show_loading" : false,
+        "type" : "image",
+        "default" : {
+          "size_type" : "exact",
+          "src" : "../../images/phonebook.png",
+          "alt" : "phone icon",
+          "width" : 128,
+          "height" : 128
+        }
+      },
+      {
+        "name" : "phone_text",
+        "label" : "Phone text",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "Contact Us"
+      },
+        {
+          "name" : "email_icon",
+          "label" : "Email Icon",
+          "required" : true,
+          "locked" : false,
+          "responsive" : true,
+          "resizable" : false,
+          "show_loading" : false,
+          "type" : "image",
+          "default" : {
+            "size_type" : "exact",
+            "src" : "../../images/email.png",
+            "alt" : "email text",
+            "width" : 128,
+            "height" : 128
+          }
+        },{
+          "name" : "email_text",
+          "label" : "email text",
+          "required" : false,
+          "locked" : false,
+          "validation_regex" : "",
+          "allow_new_line" : false,
+          "show_emoji_picker" : false,
+          "type" : "text",
+          "default" : "Contact Us"
+        },
+        {
+          "name" : "donate_icon",
+          "label" : "Donate Icon",
+          "required" : true,
+          "locked" : false,
+          "responsive" : true,
+          "resizable" : false,
+          "show_loading" : false,
+          "type" : "image",
+          "default" : {
+            "size_type" : "exact",
+            "src" : "../../images/icons8-donation-96.png",
+            "alt" : "email text",
+            "width" : 128,
+            "height" : 128
+          }
+        },{
+          "name" : "donation_text",
+          "label" : "Dontation text",
+          "required" : false,
+          "locked" : false,
+          "validation_regex" : "",
+          "allow_new_line" : false,
+          "show_emoji_picker" : false,
+          "type" : "text",
+          "default" : "Donation"
+        },
+        {
+          "name" : "donation_link",
+          "display_width" : null,
+          "label" : "Donation Page Link",
+          "required" : false,
+          "locked" : false,
+          "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+          "show_advanced_rel_options" : true,
+          "type" : "link",
+          "default" : {
+            "url" : {
+              "content_id" : null,
+              "type" : "EXTERNAL",
+              "href" : ""
+            },
+            "open_in_new_tab" : false,
+            "no_follow" : false
+          }
+        },
+        {
+          "name" : "side_bar_nav_icon",
+          "label" : "Side Bar Navigation icon",
+          "required" : true,
+          "locked" : false,
+          "responsive" : true,
+          "resizable" : false,
+          "show_loading" : false,
+          "type" : "image",
+          "default" : {
+            "size_type" : "exact",
+            "src" : "../../images/burger-bar.png",
+            "alt" : "tshiamiso astronauts logo",
+            "width" : 128,
+            "height" : 128
+          }
+        }
+      
+    ]
+  }
+,{
+  "type": "group",
+  "name": "header_nav",
+  "label": "Header Logo & Navigation Tab",
+  "expanded": false,
+  "children": [
+    {
+      "name" : "header_logo",
+      "label" : "Header Logo",
+      "required" : true,
+      "locked" : false,
+      "responsive" : true,
+      "resizable" : false,
+      "show_loading" : false,
+      "type" : "image",
+      "default" : {
+        "size_type" : "exact",
+        "src" : "../../images/logo.png",
+        "alt" : "tshiamiso astronauts logo",
+        "width" : 128,
+        "height" : 128
+      }
+    },{
+      "type": "group",
+      "name": "nav_tabs",
+      "label": "Header Navigation Tabs",
+      "expanded": false,
+      "occurrence" : {
+        "min" : 1,
+        "max" : null,
+        "sorting_label_field" : null,
+        "default" : 1
+      },
+      "children": [
+
+        {
+          "name" : "nav_tab_name",
+          "label" : "Navigation Tab Name",
+          "required" : false,
+          "locked" : false,
+          "validation_regex" : "",
+          "allow_new_line" : false,
+          "show_emoji_picker" : false,
+          "type" : "text",
+          "default" : "Navigation tab name"
+        },
+      
+        {
+          "name" : "nav_tab_link",
+          "display_width" : null,
+          "label" : "Navigation Tab Link",
+          "required" : false,
+          "locked" : false,
+          "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+          "show_advanced_rel_options" : true,
+          "type" : "link",
+          "default" : {
+            "url" : {
+              "content_id" : null,
+              "type" : "EXTERNAL",
+              "href" : ""
+            },
+            "open_in_new_tab" : false,
+            "no_follow" : false
+          }
+        }
+       ]
+  },{
+    "type": "group",
+    "name": "nav_tab_hover_effect",
+    "label": "Navigation Tab Hover Effect",
+    "expanded": false,
+    "children": [
+          {
+            "name" : "tab_hover_effect",
+            "label" : "Tab Hover Effect",
+            "required" : false,
+            "locked" : false,
+            "multiple":"false",
+            "display" : "select",
+            "choices" : [ [ "Background-Color", "Background_Color" ], [ "Bottom-Border", " Border_Bottom" ] ],
+            "type" : "choice",
+            "default" : "Background-Color"
+          }
+    ]
+  },{
+  "type": "group",
+  "name": "nav_button",
+  "label": "Header Navigation Button",
+  "expanded": false,
+  "children": [
+
+        {
+          "name" : "button_name",
+          "label" : "Button Name",
+          "required" : false,
+          "locked" : false,
+          "validation_regex" : "",
+          "allow_new_line" : false,
+          "show_emoji_picker" : false,
+          "type" : "text",
+          "default" : "Contact Us"
+        },
+      
+        {
+          "name" : "button_link",
+          "display_width" : null,
+          "label" : "Button Link",
+          "required" : false,
+          "locked" : false,
+          "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+          "show_advanced_rel_options" : true,
+          "type" : "link",
+          "default" : {
+            "url" : {
+              "content_id" : null,
+              "type" : "EXTERNAL",
+              "href" : ""
+            },
+            "open_in_new_tab" : false,
+            "no_follow" : false
+          }
+        }
+   ]
+  }
+ ]
+},
+{
+  "type": "group",
+  "name": "side_header_nav",
+  "label": "Side Navigation",
+  "expanded": false,
+  "children": [
+    {
+      "name" : "close_icon",
+      "label" : "Close Icon",
+      "required" : true,
+      "locked" : false,
+      "responsive" : true,
+      "resizable" : false,
+      "show_loading" : false,
+      "type" : "image",
+      "default" : {
+        "size_type" : "exact",
+        "src" : "../../images/close.png",
+        "alt" : "tshiamiso astronauts logo",
+        "width" : 128,
+        "height" : 128
+      }
+    }
+  ]
+}
+
+
+]

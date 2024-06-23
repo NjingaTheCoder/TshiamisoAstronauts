@@ -1,0 +1,11 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Contact
+  screenshotPath: ../images/Contact-us-template.png
+-->
+{% extends "./layouts/base.html" %} {% block body %} {% dnd_area "dnd_area"
+label="Main section", class="body-container body-container--contact" %} {# Hero
+banner #} {% include_dnd_partial path="../sections/featured_image.html" %} {#
+Form #} {% include_dnd_partial path="../sections/contact_us.html" %} {%
+end_dnd_area %} {% endblock body %}

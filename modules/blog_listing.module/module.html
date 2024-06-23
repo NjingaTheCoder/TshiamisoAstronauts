@@ -1,0 +1,248 @@
+<!-- module html  -->
+
+<div id="blog-listing-container">
+
+    {% set rec_posts = blog_recent_posts(module.blog, 10) %}
+
+    <div id="blog-listing-grid">
+       
+       
+
+        {% for rec_post in rec_posts %}
+        <div class="blog-listing-card">
+            <img class="blog-listing-image" src="{{ rec_post.featured_image  }}" alt="{{ content.featured_image_alt_text }}">
+
+            <div class="blog-listing-text-container">
+                <h4 class="blog-listing-header">{{ rec_post.name|truncatehtml(60 , " ")}}</h4>
+                <p class="blog-listing-date">{{ rec_post.publish_date_localized|truncatehtml(20,"")}}</p>
+                <p class="blog-listing-description">
+                    {{rec_post.post_list_content|truncatehtml(100 , "") }} 
+                </p>
+                <a class="blog-listing-readMore" href="{{ rec_post.absolute_url}}">Read More</a>
+            </div>
+   
+        </div>
+
+        {% endfor %}
+
+     </div>
+
+     
+     {# Blog pagination #} 
+
+     {% if  rec_posts.total_page_count > 0 %}
+    <nav id="Pagination" aria-label="Pagination" role="navigation">
+  
+      {% set page_list = [-2, -1, 0, 1, 2] %} 
+      {% if  rec_posts.total_page_count - current_page_num == 1 %}
+      {% set offset = -1 %}
+      {% elif  rec_posts.total_page_count - current_page_num == 0 %}
+      {% set offset = -2 %} 
+      {%elif current_page_num == 2 %}
+      {% set offset = 1 %} 
+      {% elif current_page_num == 1 %}
+      {% set offset = 2 %} 
+      {% else %}
+      {% set offset = 0 %}
+      {% endif %}
+  
+      <a
+        class="blog-pagination__link blog-pagination__prev-link {{ 'blog-pagination__prev-link--disabled' if !last_page_num }}"
+        {% if last_page_num %}
+        href="{% if current_page_num == 2 %}
+           {{ group.absolute_url }} 
+        {% else %}
+           {{ blog_page_link(last_page_num) }}
+        {% endif %}"
+        rel="prev"
+        {% else %}
+        aria-disabled="true"
+        disabled
+        {% endif %}
+        role="button"
+        aria-label="Go to previous page"
+      >
+        Prev
+      </a>
+      {% for page in page_list %}
+      {% set this_page = current_page_num + page + offset %}
+       {% if this_page > 0 and this_page <= contents.total_page_count %}
+      <a
+        class="blog-pagination__link blog-pagination__number-link {{ 'blog-pagination__link--active' if this_page == current_page_num }}"
+        aria-label="Go to Page {{ this_page }}"
+        {% if this_page=""
+        ="current_page_num"%}
+        aria-current="true"
+        {% endif %}
+        href="{% if this_page == 1 %}
+        {{ group.absolute_url }}
+        {% else %}
+        {{ blog_page_link(this_page) }}
+        {% endif %}"
+        >{{ this_page }}</a
+      >
+      {% endif %} 
+      {% endfor %}
+      <a
+        class="blog-pagination__link blog-pagination__next-link {{ 'blog-pagination__next-link--disabled' if !next_page_num }}"
+        {% if next_page_num %}
+        href="{{ blog_page_link(current_page_num + 1) }}"
+        rel="prev"
+        {% else %}
+        aria-disabled="true"
+        disabled
+        {% endif %}
+        role="button"
+        aria-label="Go to next page"
+      >
+        Next
+      </a>
+    </nav>
+    {% endif %} 
+    {# End blog pagination #}
+     
+     
+</div>
+
+    
+
+{%require_css%}
+
+<style>
+
+{% set primary_color = theme.brand_color.primary_color.color %}
+    {%scope_css%}
+
+    #blog-listing-container{
+        font-family: var(--theme-font-family);
+        display: flex;
+        gap: 5rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 3rem 10rem;
+        padding-top: 2rem;
+    }
+
+    #blog-listing-grid{
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(3 , 1fr);
+      justify-content: center;
+    }
+
+    .blog-listing-card{
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      transition: all .3s;
+
+    }
+
+    #blog-listing-grid .blog-listing-card .blog-listing-text-container{
+
+
+        display:flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        padding: 2rem;
+    }
+
+  
+
+    #blog-listing-grid .blog-listing-card .blog-listing-text-container .blog-listing-readMore{
+
+        width: fit-content;
+        margin-top: 0.5rem;
+        padding: 1rem 2.1rem;
+        font-weight: 600;
+        transition: all 0.3s;
+        font-size: var(--button-font) !important;
+        border : 3px solid {{ primary_color }};
+        background-color :   {{ primary_color }};
+        color: var(--a-color) ;
+        text-decoration: none;    
+        animation: slide-up 0.7s ease-in-out forwards;
+
+
+        }
+
+        #blog-listing-grid .blog-listing-card .blog-listing-text-container .blog-listing-readMore:hover{
+
+        background-color: white;
+        border: 3px solid ;
+        color :  {{ primary_color }};
+        }
+
+
+
+
+    #blog-listing-grid .blog-listing-card .blog-listing-text-container h4{
+      color: black;
+      font-weight: 600;
+      font-size: 1.5rem;
+
+    }
+
+    .blog-listing-image{
+
+      width: 380px;
+      height: 230px;
+    }
+
+    #Pagination{
+
+        font-weight: 500;
+        display: flex;
+        gap: 1rem;
+        opacity: 0;
+    }
+
+    #Pagination a{
+
+        transition:  transform .3s;
+    }
+
+    #Pagination a:hover{
+
+        transform: scale(1.2);
+    }
+
+    .blog-listing-card.slide ,  #blog-listing-grid .blog-listing-card .blog-listing-text-container.slide,   #Pagination.slide{
+
+      animation:  SlideIn .9s linear 300ms forwards;
+      -webkit-animation:  SlideIn .9s linear 300ms forwards;
+    }
+
+
+    @keyframes SlideIn{
+
+      0%{
+          opacity: 0;
+          transform: translateY(50%);
+          -webkit-transform: translateY(50%);
+          -moz-transform: translateY(50%);
+          -ms-transform: translateY(50%);
+          -o-transform: translateY(50%);
+
+      }
+      
+
+      100%{
+          
+          opacity: 1;
+          transform: translateY(0%);
+          -webkit-transform: translateY(0%);
+          -moz-transform: translateY(0%);
+          -ms-transform: translateY(0%);
+          -o-transform: translateY(0%);
+      }
+      }
+
+    {%end_scope_css%}
+</style>
+
+{%end_require_css%}
+
+

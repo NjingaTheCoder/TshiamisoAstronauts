@@ -1,0 +1,32 @@
+[  {
+  "type": "group",
+  "name": "cards",
+  "label": "Cards",
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 1
+  },
+  "expanded": false,
+  "children": [
+  {
+    "name" : "sponsor_icon",
+    "label" : "Sponsor or Partner Icon",
+    "required" : true,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "exact",
+      "src" : "../../images/logo.png",
+      "alt" : "card",
+      "width" : 128,
+      "height" : 128
+    }
+  }
+ ]
+}
+]

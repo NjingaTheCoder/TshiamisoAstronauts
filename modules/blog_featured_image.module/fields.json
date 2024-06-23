@@ -1,0 +1,26 @@
+[
+  {
+    "name": "blog_featured_image",
+    "label": "Blog Featured image",
+    "required": false,
+    "type": "backgroundimage",
+    "default": {
+        "src": "{{ get_asset_url('/tshiamiso_astronauts_theme/images/2_The Great Debate Mobile Phones and Middle Scholars Tshiamiso Astronauts (1).png') }}",
+        "background_position": "MIDDLE_CENTER",
+        "background_size": "cover"
+    }
+  
+  },
+
+  {
+    "name" : "stext_color",
+    "label" : "Text color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+       "color" : "#000000",
+       "opacity" : 100
+    }
+  }
+]

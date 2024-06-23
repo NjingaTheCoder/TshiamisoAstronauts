@@ -1,0 +1,194 @@
+<!-- module html  -->
+<div id="contact-us-container">
+
+
+    <div id="contact-us-image-form">
+
+        <div id="contact-us-image">
+
+            {% if module.contect_us_image.src %}
+                {% set sizeAttrs = 'width="{{ module.contect_us_image.width|escape_attr }}" height="{{ module.contect_us_image.height|escape_attr }}"' %}
+                {% if module.contect_us_image.size_type == 'auto' %}
+                    {% set sizeAttrs = 'width="{{ module.contect_us_image.width|escape_attr }}" height="{{ module.contect_us_image.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                {% elif module.contect_us_image.size_type == 'auto_custom_max' %}
+                    {% set sizeAttrs = 'width="{{ module.contect_us_image.max_width|escape_attr }}" height="{{ module.contect_us_image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                {% set loadingAttr = module.contect_us_image.loading != 'disabled' ? 'loading="{{ module.contect_us_image.loading|escape_attr }}"' : '' %}
+                <img id="contact-us-image" src="{{ module.contect_us_image.src|escape_url }}" alt="{{ module.contect_us_image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+            {% endif %}
+        </div>
+    
+        <div id="contact-us-form">
+            {% form
+                form_to_use="{{ module.form_field_name.form_id }}"
+                response_response_type="{{ module.form_field_name.response_type }}"
+                response_message="{{ module.form_field_name.message }}"
+                response_redirect_id="{{ module.form_field_name.redirect_id }}"
+                response_redirect_url="{{module.form_field_name.redirect_url}}"
+                gotowebinar_webinar_key="{{ module.form_field_name.gotowebinar_webinar_key }}"
+            %}
+        </div>
+    </div>
+
+
+    <div id="contact-us-map">
+        {{ module.embed_map_field.embed_html}}
+    </div>
+
+
+</div>
+
+
+
+{%require_css%}
+
+<style>
+
+    {%scope_css%}
+
+    {% set primary_color = theme.brand_color.primary_color.color %}
+
+    html{
+        scroll-behavior: smooth !important;
+    }
+
+
+
+    #contact-us-container{
+        display:flex;
+        flex-direction: column;
+        gap: 3rem;
+        padding-bottom: 3rem;
+        align-items: center;
+
+    }
+
+    #contact-us-image-form{
+        display:flex;
+        gap: 3rem;
+        padding: 2rem 10rem;
+        padding-bottom: 3rem;
+        justify-content: center;
+
+    }
+
+    #contact-us-form{
+
+        width: 600px;
+        font-family: var(--theme-font-family);
+        opacity: 0;
+    }
+
+
+    #contact-us-container iframe{
+        width: 1200px;
+        opacity: 0;
+    } 
+
+    #contact-us-image{
+
+        width: 530px;
+        height: 520px;
+        object-fit: cover;
+        opacity: 0;
+    }
+
+    #contact-us-form input{
+        border : 1px solid {{ primary_color }}; 
+    }
+
+    #contact-us-form input[type="submit"]{
+        width: fit-content;
+        margin-top: 0.5rem;
+        padding: 1rem 2.1rem;
+        font-weight: 600;
+        transition: all 0.3s;
+        font-size: var(--button-font) !important;
+        border : 3px solid {{ primary_color }};
+        background-color :   {{ primary_color }};
+        color: var(--a-color) ;
+        text-decoration: none;  
+    }
+
+    #contact-us-form span{
+
+        font-weight: 500;
+    }
+
+    #contact-us-form input[type="submit"]:hover{
+
+        background-color:  var(--a-color);
+        border: 3px solid {{ primary_color }} ;
+        color : {{ primary_color }};
+    }
+
+
+    #contact-us-form.slide ,  #contact-us-container iframe.slide {
+        animation:  SlideIn .9s linear 300ms forwards;
+        -webkit-animation:  SlideIn .9s linear 300ms forwards;
+    }
+
+    #contact-us-image.slide{
+
+        animation:  SlideOut .9s linear 300ms forwards;
+        -webkit-animation:  SlideOut  .9s linear 300ms forwards;
+    }
+
+
+    @keyframes SlideIn{
+
+        0%{
+            opacity: 0;
+            transform: translateY(50%);
+            -webkit-transform: translateY(50%);
+            -moz-transform: translateY(50%);
+            -ms-transform: translateY(50%);
+            -o-transform: translateY(50%);
+
+        }
+        
+
+        100%{
+            
+            opacity: 1;
+            transform: translateY(0%);
+            -webkit-transform: translateY(0%);
+            -moz-transform: translateY(0%);
+            -ms-transform: translateY(0%);
+            -o-transform: translateY(0%);
+        }
+        }
+
+
+        @keyframes SlideOut{
+
+        0%{
+        opacity: 0;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+
+        }
+
+
+        100%{
+        
+        opacity: 1;
+        transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        -moz-transform: translateX(0%);
+        -ms-transform: translateX(0%);
+        }
+
+        }
+
+
+
+
+
+    {%end_scope_css%}
+</style>
+
+{%end_require_css%}

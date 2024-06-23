@@ -1,0 +1,63 @@
+[
+  {
+    "name": "testimonial_featured_image",
+    "label": "Testimonial Featured image",
+    "required": false,
+    "type": "backgroundimage",
+    "default": {
+        "src": "https://example.com/img.png",
+        "background_position": "MIDDLE_CENTER",
+        "background_size": "cover"
+    }
+  
+  },
+  {
+    "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit accusantium repellat minus id libero ratione provident, reiciendis ducimus eum, saepe nihil odit dolor ea. Ea perspiciatis voluptas facilis atque deserunt!",
+    "label": "Testimonial Text",
+    "locked": false,
+    "name": "testimonial_text",
+    "required": false,
+    "type": "richtext",
+    "validation_regex": ""
+  },
+  {
+    "name" : "testimonial_image",
+    "label" : "Testimonial Image",
+    "required" : true,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "exact",
+      "src" : "../../images/logo_head.png",
+      "alt" : "card",
+      "width" : 128,
+      "height" : 128
+    }
+  },
+    {
+      "name" : "testimonial_member_name",
+      "label" : "Testimonial Member Name",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Member Name"
+    },
+    {
+      "name" : "testimonial_member_title",
+      "label" : "Testimonial Member Title",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Member Title"
+    }
+
+]

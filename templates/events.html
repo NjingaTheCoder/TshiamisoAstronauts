@@ -1,0 +1,37 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Events
+  screenshotPath: ../images/EventTemplate.png
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+
+{#Featured image module#}
+	
+
+
+{% dnd_area "dnd_area"
+  label="Main section",
+  class="body-container body-container--events"
+%}
+
+  {# Hero banner #}
+
+  {% include_dnd_partial path="../sections/featured_image.html" %}
+
+  {# Detailed Events #}
+
+  {% include_dnd_partial path="../sections/detailed_events.html" %}
+
+{% end_dnd_area %}
+{% endblock body %}
+
+
+
+
+
+
+
+

@@ -1,0 +1,148 @@
+<!--
+    templateType: blog_post
+    isAvailableForNewContent: true
+    label: Blog post
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+
+  <!-- module html  -->
+
+  <div id="blog-post-container">
+
+{% module "module_17190740362781" path="/tshiamiso_astronauts_theme/modules/blog_featured_image", label="blog_featured_image"%}
+
+    {# Blog post #}
+    <article>
+      <div>
+        <a href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}" rel="author">
+          {{ content.blog_post_author.display_name }}
+        </a>
+        <time>
+          {{ content.publish_date_localized|truncatehtml(20 , " ")}}
+        </time>
+      </div>
+      <div id="article-body">
+        {{ content.post_body }}
+      </div>
+      {% if content.tag_list %}
+      <div id="blog-tag">
+      {% for tag in content.tag_list %}
+        <a href="{{ blog_tag_url(group.id, tag.slug) }}" rel="tag">{{ tag.name }}</a> {% if not loop.last %},{% endif %}
+      {% endfor %}
+      </div>
+      {% endif %}
+    </article>
+  
+    {% if group.allow_comments %}
+    <div id="blog-comments">
+      <h4>Share your thoughts</h4>
+      {% module 'blog_comments' path='@hubspot/blog_comments', label="Blog comments" %}
+    </div>
+    {% endif %}
+    {# End blog post #}
+  
+  </div>
+  
+
+{% endblock body %}
+
+
+{%require_css%}
+
+<style>
+  {% set primary_color = theme.brand_color.primary_color.color %}
+  
+    :root {
+
+    --h1-font-size : 2.3rem;
+    --theme-font-family :"Montserrat", sans-serif;
+    --h1-color : white;
+    --button-font : 1rem;
+    --p-font : 1.2rem;
+    }
+
+
+  #blog-post-container{
+    font-family: var(--theme-font-family);
+    padding: 5rem 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  
+  #blog-post-container article ,  #blog-post-container article #hs_cos_wrapper_post_body{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    gap: 2rem;
+  }
+ 
+
+  #blog-tag a{
+    color: skyblue;
+  }
+
+  #blog-comments{
+
+    padding-top: 3rem;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  #blog-comments h4{
+  font-size: 1.3rem;
+  }
+
+
+  #blog-comments .hs-button{
+
+    width: fit-content;
+    margin-top: 0.5rem;
+    padding: 1rem 2.1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    font-size: var(--button-font) !important;
+    border : 3px solid {{ primary_color }};
+    background-color :   {{ primary_color }};
+    color: var(--a-color) ;
+    text-decoration: none;
+
+
+    }
+
+    #blog-comments .hs-button:hover{
+
+    background-color: white;
+    border: 3px solid {{ primary_color }};
+    color : {{ primary_color }};
+    }
+
+
+  @media only screen and (max-width: 1200px) {
+    #blog-post-container{
+    padding: 5rem 10rem !important;
+
+  }
+
+  @media only screen and (max-width: 700px) {
+    #blog-post-container{
+    padding: 5rem 5rem !important;
+    }
+
+    #blog-post-container article ,  #blog-post-container article #hs_cos_wrapper_post_body{
+
+    width: 60vw !important;
+    }
+
+
+}
+
+</style>
+
+{% end_require_css %}

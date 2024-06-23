@@ -1,0 +1,191 @@
+<!-- module html  -->
+
+<div id="events-container">
+  <div id="event-header-text">
+    <h2>{{ module.event_header_text }}</h2>
+  </div>
+
+  <div id="event-details">
+    {% for item in module.event_name_date %}
+
+    {% set href = item.event_link.url.href %}
+    {% if item.event_link.url.type is equalto "EMAIL_ADDRESS" %}
+      {% set href = "mailto:" + href %}
+    {% endif %}
+    <a id="date-time-link"  href="{{ href|escape_url }}"
+    {% if item.event_link.open_in_new_tab %}target="_blank"{% endif %}
+    {% if item.event_link.rel %}rel="{{ item.event_link.rel|escape_attr }}"{% endif %}
+    >
+      <div id="date-time-container">
+        {% set eventDate = item.event_start | plus_time(1, 'days')|
+        format_date("yyyy.MMM.d") %}
+  
+        <div id="month-name">
+          {%set dateSplit = eventDate |split(".")%}
+          <p>{{dateSplit[1]}}</p>
+          <p id="month">{{dateSplit[2]}}</p>
+        </div>
+  
+        <div id="time-name">
+          <p>
+            {{ item.event_start_time.event_time }} {{ item.event_start_time.time
+            }} - {{ item.event_End_time.event_time }} {{ item.event_End_time.time
+            }}
+          </p>
+          <p id="event-name">{{item.event_name}}</p>
+        </div>
+      </div>
+  
+    </a>
+   
+    {% endfor %}
+  </div>
+</div>
+
+{%require_css%}
+
+<style>
+
+  {% set secondary_color = theme.brand_color.secondary_color.color %}
+    :root {
+
+    --h2-font-size-event : 2.5rem;
+    }
+    {% scope_css %}
+
+
+
+
+     #events-container{
+        color: {{ module.event_text_color.color }};
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5rem;
+        min-height: 500px;
+        padding: 5rem 10rem;
+        padding-right: 11rem;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: {{ module.events_featured_image.background_size}}  ;
+        background-position: {{ module.events_featured_image.background_position}} ;
+        background-image:   linear-gradient(rgba(10,138,157, 0.127),rgba(10,138,157 , 0.9)) , url({{ module.events_featured_image.src }});
+     }
+
+
+     #event-header-text h2{
+        font-size: var(--h2-font-size-event);
+        font-family:var(--theme-font-family);
+        text-shadow: 2px 2px rgb(32, 32, 32 , 0.2);
+        text-align: center;
+
+     }
+
+     #event-header-text{
+      opacity: 0;
+     }
+
+     #event-details{
+       opacity: 0;
+        background-color: {{secondary_color}};
+        padding: 3rem;
+        min-width: 620px;
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+     }
+
+     #date-time-link{
+      text-decoration: none;
+      transition: transform .3s;
+     }
+
+     #date-time-link:hover{
+
+      transform: scale(1.02);
+     }
+
+     #event-details #date-time-container{
+        display: flex;
+        gap: 1rem;
+
+     }
+
+     #event-details #date-time-container #month,  #event-details #date-time-container #event-name{
+      font-size: 1.2rem;
+      font-weight: bolder;
+     }
+
+
+     #event-details p{
+        font-family:var(--theme-font-family);
+        color: {{ module.event_text_color.color }};
+        word-wrap: break-word;
+      }
+
+
+      #event-details.fade-in {
+      animation:  Slide .9s linear 300ms forwards;
+      -webkit-animation:  Slide  .9s linear 300ms forwards;
+      }
+
+
+      #event-header-text.fade-in {
+      animation:  fadeIn .9s linear 300ms forwards;
+      -webkit-animation:  fadeIn  .9s linear 300ms forwards;
+      }
+
+      @keyframes fadeIn {
+      0%{
+      opacity: 0;
+      transform: translateY(50%);
+      -webkit-transform: translateY(50%);
+      -moz-transform: translateY(50%);
+      -ms-transform: translateY(50%);
+      -o-transform: translateY(50%);
+
+      }
+
+
+      100%{
+          opacity: 1;
+          transform: translateY(0%);
+          -webkit-transform: translateY(0%);
+          -moz-transform: translateY(0%);
+          -ms-transform: translateY(0%);
+          -o-transform: translateY(0%);
+      }
+    }
+
+
+
+  @keyframes Slide{
+
+  0%{
+    opacity: 0;
+    transform: translateX(50%);
+    -webkit-transform: translateX(50%);
+    -moz-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    -o-transform: translateX(50%);
+
+  }
+
+
+  100%{
+
+    opacity: 1;
+    transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+  }
+
+  }
+
+
+
+    {% end_scope_css %}
+</style>
+
+{%end_require_css%}

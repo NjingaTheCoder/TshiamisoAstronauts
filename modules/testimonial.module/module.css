@@ -1,0 +1,10 @@
+@media only screen and (max-width: 758px) {
+  #testimonial-container {
+    padding: 3rem 3rem !important;
+  }
+
+  #testimonial-text{
+    font-size: 1.3rem !important;
+}
+
+}

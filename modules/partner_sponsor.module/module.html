@@ -1,0 +1,88 @@
+<!-- module html  -->
+<div id="sponsor-partner-container">
+    <div id="sponsor-partner-grid">
+        {% for item in module.cards %}
+        {% if item.sponsor_icon.src %}
+            {% set sizeAttrs = 'width="{{ item.sponsor_icon.width|escape_attr }}" height="{{ item.sponsor_icon.height|escape_attr }}"' %}
+            {% if item.sponsor_icon.size_type == 'auto' %}
+                {% set sizeAttrs = 'width="{{ item.sponsor_icon.width|escape_attr }}" height="{{ item.sponsor_icon.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% elif item.sponsor_icon.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ item.sponsor_icon.max_width|escape_attr }}" height="{{ item.sponsor_icon.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+             {% set loadingAttr = item.sponsor_icon.loading != 'disabled' ? 'loading="{{ item.sponsor_icon.loading|escape_attr }}"' : '' %}
+    
+    
+            <img  class="sponsor-partner-image" src="{{ item.sponsor_icon.src|escape_url }}" alt="{{ item.sponsor_icon.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{%require_css%}
+
+<style>
+
+    {%scope_css%}
+
+    #sponsor-partner-container{
+
+        font-family: var(--theme-font-family);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5rem 10rem;
+        padding-top: 3rem;
+        padding-right: 11rem;
+    }
+
+    #sponsor-partner-grid{
+
+        display: grid;
+        grid-template-columns: repeat(4 , 1fr);
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .sponsor-partner-image{
+
+        min-width: 200px;
+        min-height: 50px;
+        resize: none;
+        opacity: 0;
+    }
+
+    .sponsor-partner-image.slide{
+        animation:  SlideIn .9s linear 300ms forwards;
+        -webkit-animation:  SlideIn .9s linear 300ms forwards;
+    }
+    @keyframes SlideIn{
+
+        0%{
+            opacity: 0;
+            transform: translateY(50%);
+            -webkit-transform: translateY(50%);
+            -moz-transform: translateY(50%);
+            -ms-transform: translateY(50%);
+            -o-transform: translateY(50%);
+
+        }
+        
+
+        100%{
+            
+            opacity: 1;
+            transform: translateY(0%);
+            -webkit-transform: translateY(0%);
+            -moz-transform: translateY(0%);
+            -ms-transform: translateY(0%);
+            -o-transform: translateY(0%);
+        }
+        }
+
+
+
+    {%end_scope_css%}
+</style>
+
+{%end_require_css%}

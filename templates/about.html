@@ -1,0 +1,46 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: About
+  screenshotPath: ../images/AboutUsTemplate.png
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+{% dnd_area "dnd_area"
+  label="Main section",
+  class="body-container body-container--about"
+%}
+
+{# Hero banner #}
+
+{% include_dnd_partial path="../sections/featured_image.html" %}
+
+{# Who we are #}
+
+{% include_dnd_partial path="../sections/about_us.html" %}
+
+{# Side by Side #}
+
+{% include_dnd_partial path="../sections/side_by_side.html" %}
+     
+{# Side by Side two #}
+
+{% include_dnd_partial path="../sections/side_by_side.html" %}
+   
+{# Who we are 2#}
+
+{% include_dnd_partial path="../sections/about_us.html" %}
+
+{# Sub header and Cards #}
+
+{% include_dnd_partial path="../sections/header&cards.html" %}
+
+
+{# Sub Featured Image #}
+
+{% include_dnd_partial path="../sections/sub_featured_image.html" %}
+
+
+{% end_dnd_area %}
+{% endblock body %}

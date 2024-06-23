@@ -1,0 +1,194 @@
+[
+
+
+{
+  "name" : "detailed_event_text_color",
+  "label" : "Event Text color",
+  "required" : false,
+  "locked" : false,
+  "type" : "color",
+  "default" : {
+     "color" : "#FFFFFF",
+     "opacity" : 100
+  }
+}
+    ,{
+      "type": "group",
+      "name": "detailed_event_name_date",
+      "label": "Events Details",
+      "expanded": false,
+      "occurrence" : {
+        "min" : 1,
+        "max" : null,
+        "sorting_label_field" : null,
+        "default" : 1
+      },
+      "children": [
+        {
+          "name" : "event_name",
+          "label" : "Event Name",
+          "required" : false,
+          "locked" : false,
+          "validation_regex" : "",
+          "allow_new_line" : false,
+          "show_emoji_picker" : false,
+          "type" : "text",
+          "default" : "Event Name"
+        },
+      
+        {
+          "name" : "event_link",
+          "display_width" : null,
+          "label" : "Event Link",
+          "required" : false,
+          "locked" : false,
+          "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+          "show_advanced_rel_options" : true,
+          "type" : "link",
+          "default" : {
+            "url" : {
+              "content_id" : null,
+              "type" : "EXTERNAL",
+              "href" : ""
+            },
+            "open_in_new_tab" : false,
+            "no_follow" : false
+          }
+        },
+        {
+          "name" : "event_description",
+          "label" : "Event Description",
+          "required" : false,
+          "locked" : false,
+          "validation_regex" : "",
+          "allow_new_line" : false,
+          "show_emoji_picker" : false,
+          "type" : "text",
+          "default" : "Event Description"
+        },
+        {
+          "name" : "event_location",
+          "label" : "Event Location",
+          "required" : false,
+          "locked" : false,
+          "validation_regex" : "",
+          "allow_new_line" : false,
+          "show_emoji_picker" : false,
+          "type" : "text",
+          "default" : "Event Location"
+        }
+        ,{
+          "name" : "event_start",
+          "label" : "Event Start Date",
+          "required" : false,
+          "locked" : false,
+          "type" : "date",
+          "default" : 0
+        },
+        {
+          "type": "group",
+          "name": "event_start_time",
+          "label": "Event Start Time",
+          "expanded": false,
+          "children" : [
+            {
+              "name" : "event_time",
+              "label" : "Events Time",
+              "required" : false,
+              "locked" : false,
+              "validation_regex" : "",
+              "allow_new_line" : false,
+              "show_emoji_picker" : false,
+              "type" : "text",
+              "default" : "10:00"
+            },
+            {
+              "name" : "time",
+              "label" : "Time Option",
+              "required" : false,
+              "locked" : false,
+              "multiple":"false",
+              "display" : "select",
+              "choices" : [ [ "AM", "AM" ], [ "PM", "PM" ] ],
+              "type" : "choice",
+              "default" : "AM"
+            }
+
+          ]
+        },
+        {
+          "type": "group",
+          "name": "event_End_time",
+          "label": "Event End Time",
+          "expanded": false,
+          "children" : [
+            {
+              "name" : "event_time",
+              "label" : "Events Time",
+              "required" : false,
+              "locked" : false,
+              "validation_regex" : "",
+              "allow_new_line" : false,
+              "show_emoji_picker" : false,
+              "type" : "text",
+              "default" : "10:00"
+            },
+            {
+              "name" : "time",
+              "label" : "Time Option",
+              "required" : false,
+              "locked" : false,
+              "multiple":"false",
+              "display" : "select",
+              "choices" : [ [ "AM", "AM" ], [ "PM", "PM" ] ],
+              "type" : "choice",
+              "default" : "AM"
+            }
+
+          ]
+        },
+
+        {
+          "type": "group",
+          "name": "event_button",
+          "label": "Event Button",
+          "expanded": false,
+          "children": [
+        
+                {
+                  "name" : "button_name",
+                  "label" : "Button Name",
+                  "required" : false,
+                  "locked" : false,
+                  "validation_regex" : "",
+                  "allow_new_line" : false,
+                  "show_emoji_picker" : false,
+                  "type" : "text",
+                  "default" : "Contact Us"
+                },
+              
+                {
+                  "name" : "button_link",
+                  "display_width" : null,
+                  "label" : "Button Link",
+                  "required" : false,
+                  "locked" : false,
+                  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+                  "show_advanced_rel_options" : true,
+                  "type" : "link",
+                  "default" : {
+                    "url" : {
+                      "content_id" : null,
+                      "type" : "EXTERNAL",
+                      "href" : ""
+                    },
+                    "open_in_new_tab" : false,
+                    "no_follow" : false
+                  }
+                }
+           ]
+          }
+
+      ]
+    }
+] 

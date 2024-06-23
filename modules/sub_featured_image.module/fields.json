@@ -1,0 +1,96 @@
+[
+  {
+    "name": "sub_featured_image",
+    "label": "Sub Featured image",
+    "required": false,
+    "type": "backgroundimage",
+    "default": {
+        "src": "{{ get_asset_url('/tshiamiso_astronauts_theme/images/2_The Great Debate Mobile Phones and Middle Scholars Tshiamiso Astronauts (1).png') }}",
+        "background_position": "MIDDLE_CENTER",
+        "background_size": "cover"
+    }
+  
+  },
+  {
+    "name" : "sub_feartured_image_header_text",
+    "label" : "Sub Featured Image Header Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "The Koffie jumped out the bean bag"
+  },{
+          "name" : "sub_feartured_image__color",
+          "label" : "Sub Featured Image color",
+          "required" : false,
+          "locked" : false,
+          "type" : "color",
+          "default" : {
+             "color" : "#fffffff",
+             "opacity" : 100
+          }
+        },
+  {
+    "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit accusantium repellat minus id libero ratione provident, reiciendis ducimus eum, saepe nihil odit dolor ea. Ea perspiciatis voluptas facilis atque deserunt!",
+    "label": "Sub Featured Image Text",
+    "locked": false,
+    "name": "sub_featured_image_text",
+    "required": false,
+    "type": "richtext",
+    "validation_regex": ""
+  }, {
+    "type": "group",
+    "name": "sub_featured_image_button",
+    "label": "Sub Featured Image Button",
+    "expanded": false,
+    "children": [
+  
+          {
+            "name" : "button_name",
+            "label" : "Button Name",
+            "required" : false,
+            "locked" : false,
+            "validation_regex" : "",
+            "allow_new_line" : false,
+            "show_emoji_picker" : false,
+            "type" : "text",
+            "default" : "Contact Us"
+          },
+        
+          {
+            "name" : "button_link",
+            "display_width" : null,
+            "label" : "Button Link",
+            "required" : false,
+            "locked" : false,
+            "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+            "show_advanced_rel_options" : true,
+            "type" : "link",
+            "default" : {
+              "url" : {
+                "content_id" : null,
+                "type" : "EXTERNAL",
+                "href" : ""
+              },
+              "open_in_new_tab" : false,
+              "no_follow" : false
+            }
+          },
+          {
+
+            "name" : "button_state",
+            "label" : "Button State",
+            "required" : false,
+            "locked" : false,
+            "multiple":"false",
+            "display" : "select",
+            "choices" : [ [ "On", "on" ], [ "Off", "off" ] ],
+            "type" : "choice",
+            "default" : "On"
+          }
+     ]
+    }
+
+]

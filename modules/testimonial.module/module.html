@@ -1,0 +1,119 @@
+<!-- module html  -->
+
+<div id="testimonial-container">
+
+    <h3 id="testimonial-text">
+        {{ module.testimonial_text }}
+    </h3>
+
+
+    {% if module.testimonial_image.src %}
+	{% set sizeAttrs = 'width="{{ module.testimonial_image.width|escape_attr }}" height="{{ module.testimonial_image.height|escape_attr }}"' %}
+	{% if module.testimonial_image.size_type == 'auto' %}
+		{% set sizeAttrs = 'width="{{ module.testimonial_image.width|escape_attr }}" height="{{ module.testimonial_image.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+	{% elif module.testimonial_image.size_type == 'auto_custom_max' %}
+		{% set sizeAttrs = 'width="{{ module.testimonial_image.max_width|escape_attr }}" height="{{ module.testimonial_image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+	{% endif %}
+	 {% set loadingAttr = module.testimonial_image.loading != 'disabled' ? 'loading="{{ module.testimonial_image.loading|escape_attr }}"' : '' %}
+	    <img id="member-image" src="{{ module.testimonial_image.src|escape_url }}" alt="{{ module.testimonial_image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+    {% endif %}
+    <div id="member-text">
+        <p id="member-name">{{ module.testimonial_member_name }}</p>
+        <p id="member-title" >{{ module.testimonial_member_title }}</p>
+    </div>
+
+
+</div>
+
+
+{%require_css%}
+
+<style>
+
+    {%scope_css%}
+
+    #testimonial-container{
+
+        font-family: var(--theme-font-family);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        min-height: 400px;
+        padding: 5rem 10rem;
+        padding-right: 11rem;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: {{ module.testimonial_featured_image.background_size}}  ;
+        background-position: {{ module.testimonial_featured_image.background_position}} ;
+        background-image:   linear-gradient(rgba(0,0,0, 0.127),rgba(0,0,0 , 0.1)) , url({{ module.testimonial_featured_image.src }});
+    }
+   
+
+    #testimonial-text{
+        opacity: 0;
+        font-style: normal;
+        font-weight: 600;
+        text-decoration: none;
+        text-align: center;
+        font-size: 1.4rem;
+        text-transform: none
+    }
+
+
+    #member-image{
+        opacity: 0;
+        max-width: 80px !important;
+        display: block;
+    }
+
+    #member-name{
+        opacity: 0;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    #member-title{
+        opacity: 0;
+        text-align: center;
+        font-size: 1.2rem;
+
+    }
+
+    #member-title.slide, #member-name.slide , #member-image.slide , #testimonial-text.slide{
+    animation:  SlideIn .9s linear 300ms forwards;
+    -webkit-animation:  SlideIn .9s linear 300ms forwards;
+    }
+
+    @keyframes SlideIn{
+
+        0%{
+            opacity: 0;
+            transform: translateY(50%);
+            -webkit-transform: translateY(50%);
+            -moz-transform: translateY(50%);
+            -ms-transform: translateY(50%);
+            -o-transform: translateY(50%);
+
+        }
+        
+
+        100%{
+            
+            opacity: 1;
+            transform: translateY(0%);
+            -webkit-transform: translateY(0%);
+            -moz-transform: translateY(0%);
+            -ms-transform: translateY(0%);
+            -o-transform: translateY(0%);
+        }
+        }
+
+
+
+    {%end_scope_css%}
+</style>
+
+{%end_require_css%}

@@ -1,0 +1,182 @@
+<!-- module html  -->
+
+<div id="card-container">
+  <div id="card-grid">
+    {% for item in module.cards %} {% if item.card_icon.src %} {% set sizeAttrs
+    = 'width="{{ item.card_icon.width|escape_attr }}" height="{{
+    item.card_icon.height|escape_attr }}"' %} {% if item.card_icon.size_type ==
+    'auto' %} {% set sizeAttrs = 'width="{{ item.card_icon.width|escape_attr }}"
+    height="{{ item.card_icon.height|escape_attr }}" style="max-width: 100%;
+    height: auto;"' %} {% elif item.card_icon.size_type == 'auto_custom_max' %}
+    {% set sizeAttrs = 'width="{{ item.card_icon.max_width|escape_attr }}"
+    height="{{ item.card_icon.max_height|escape_attr }}" style="max-width: 100%;
+    height: auto;"' %} {% endif %} {% set loadingAttr = item.card_icon.loading
+    != 'disabled' ? 'loading="{{ item.card_icon.loading|escape_attr }}"' : '' %}
+
+    <div class="card">
+      <img
+        src="{{ item.card_icon.src|escape_url }}"
+        alt="{{ item.card_icon.alt|escape_attr }}"
+        {{
+        loadingAttr
+        }}
+        {{
+        sizeAttrs
+        }}
+      />
+      <h3>{{ item.card_header_text }}</h3>
+      <p id="card_sub_text">{{ item.card_sub_text }}</p>
+
+      {% if item.card_button.button_state == "On" %} {% set href =
+      item.card_button.button_link.url.href %} {% if
+      item.card_button.button_link.url.type is equalto "EMAIL_ADDRESS" %} {% set
+      href = "mailto:" + href %} {% endif %}
+
+      <a
+        id="card-button"
+        href="{{ href|escape_url }}"
+        {%
+        if
+        item.card_button.button_link.open_in_new_tab
+        %}target="_blank"
+        {%
+        endif
+        %}
+        {%
+        if
+        item.card_button.button_link.rel
+        %}rel="{{ item.card_button.button_link.rel|escape_attr }}"
+        {%
+        endif
+        %}
+      >
+        {{ item.card_button.button_name }}
+      </a>
+      {%elif item.card_button.button_state == "Off"%}
+
+        {%require_css%}
+        <style>
+
+              #card-container #card-grid{
+                gap: 2rem 2rem !important;
+                margin-bottom: -3rem !important;
+              }
+
+        </style>
+        {%end_require_css%}
+      {%endif%}
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+</div>
+
+{%require_css%}
+
+<style>
+
+  {% scope_css %}
+
+    {% set primary_color = theme.brand_color.primary_color.color %}
+
+    #card-container{
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem 10rem;
+        padding-right: 12rem;
+        padding-bottom: 10rem;
+        width: 100vw;
+    }
+
+    #card-container #card-grid{
+
+        display: grid;
+        grid-template-columns: repeat(3 , 1fr);
+        gap: 5rem 2rem;
+    }
+
+    #card-container #card-grid .card{
+
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        font-family: var(--theme-font-family);
+        padding: 2rem;
+        position: relative;
+    }
+
+
+    #card-container #card-grid .card.slide {
+      animation:  SlideIn .9s linear 300ms forwards;
+      -webkit-animation:  SlideIn .9s linear 300ms forwards;
+    }
+
+    #card-container #card-grid .card img{
+
+        width: 110px;
+        height: 110px;
+    }
+
+    #card-container #card-grid .card #card_sub_text{
+        width: 300px;
+
+    }
+
+    #card-container #card-grid .card h3{
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+
+
+    #card-container #card-grid .card  #card-button{
+
+            position: absolute;
+            bottom: -4rem;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            transition: all 0.3s;
+            background-color: white;
+            border: 3px solid {{primary_color}};
+            color : {{primary_color}};
+    }
+
+    #card-container #card-grid .card  #card-button:hover{
+    border : 3px solid {{ primary_color }};
+    background-color :   {{ primary_color }};
+    color: var(--a-color) ;
+
+    }
+
+
+    @keyframes SlideIn{
+
+  0%{
+      opacity: 0;
+      transform: translateY(50%);
+      -webkit-transform: translateY(50%);
+      -moz-transform: translateY(50%);
+      -ms-transform: translateY(50%);
+      -o-transform: translateY(50%);
+
+  }
+
+
+  100%{
+
+      opacity: 1;
+      transform: translateY(0%);
+      -webkit-transform: translateY(0%);
+      -moz-transform: translateY(0%);
+      -ms-transform: translateY(0%);
+      -o-transform: translateY(0%);
+  }
+  }
+
+  {% end_scope_css %}
+</style>
+{%end_require_css%}

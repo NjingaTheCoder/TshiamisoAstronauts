@@ -1,0 +1,17 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Donations
+  screenshotPath: ../images/donateTemplate.png
+-->
+{% extends "./layouts/base.html" %} {% block body %} {#Featured image module#}
+{% dnd_area "dnd_area" label="Main section", class="body-container
+body-container--donations" %} {# Hero banner #} {% include_dnd_partial
+path="../sections/featured_image.html" %} {# Sub header and Cards #} {%
+include_dnd_partial path="../sections/header&cards.html" %} {# Side by Side #}
+{% include_dnd_partial path="../sections/side_by_side.html" %} {# Donations #}
+{% include_dnd_partial path="../sections/donation.html" %} {# Sub Featured Image
+#} {% include_dnd_partial path="../sections/sub_featured_image.html" %} {#
+Partner Sponsor #} {% include_dnd_partial
+path="../sections/partner_sponsor.html" %} {% end_dnd_area %} {% endblock body
+%}

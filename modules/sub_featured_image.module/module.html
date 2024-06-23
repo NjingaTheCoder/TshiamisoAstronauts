@@ -1,0 +1,118 @@
+<!-- module html  -->
+
+<div id="sub-featured-image-container">
+  <h3 id="sub-featured-image-header-text">
+    {{ module.sub_feartured_image_header_text }}
+  </h3>
+
+  <p id="sub-featured-image-text">{{ module.sub_featured_image_text }}</p>
+
+  {% if module.sub_featured_image_button.button_state == "On" %}
+    <a
+      id="sub_featured_image_header_cta"
+      href="{{ module.sub_featured_image_button.button_link }}"
+    >
+      {{ module.sub_featured_image_button.button_name }}
+    </a>
+
+  {%endif%}
+
+</div>
+
+{%require_css%}
+
+<style>
+
+    {%scope_css%}
+
+    {% set primary_color = theme.brand_color.primary_color.color %}
+
+    #sub-featured-image-container{
+
+        font-family: var(--theme-font-family);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding: 5rem 10rem;
+        padding-right: 11rem;
+        color: {{ module.sub_feartured_image__color.color }};
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: {{  module.sub_featured_image.background_size}}  ;
+        background-position: {{  module.sub_featured_image.background_position}} ;
+        background-image:   linear-gradient(rgba(0,0,0, 0.127),rgba(0,0,0 , 0.3)) , url({{ module.sub_featured_image.src }});
+    }
+
+
+    #sub-featured-image-header-text{
+
+      opacity: 0;
+      font-size: 3rem ;
+      text-align: center;
+      color: {{ module.sub_feartured_image__color.color }};
+    }
+
+    #sub-featured-image-text{
+
+      opacity: 0;
+      text-align: center;
+      font-weight:500;
+
+    }
+
+  #sub_featured_image_header_cta {
+
+    opacity: 0;
+  font-weight: 600;
+  width: fit-content;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  transition: all 0.3s;
+  background-color: {{ module.sub_feartured_image__color.color }};
+  border : 3px solid {{ module.sub_feartured_image__color.color }};
+  color:  {{ primary_color}};
+  }
+
+  #sub_featured_image_header_cta:hover{
+  background-color : {{ primary_color }};
+  border: 3px solid {{ primary_color }} ;
+  color : {{ module.sub_feartured_image__color.color }};
+  }
+
+    #sub-featured-image-header-text.slide , #sub-featured-image-text.slide , #sub_featured_image_header_cta.slide{
+      animation:  SlideIn .9s linear 300ms forwards;
+      -webkit-animation:  SlideIn .9s linear 300ms forwards;
+    }
+
+    @keyframes SlideIn{
+
+        0%{
+            opacity: 0;
+            transform: translateY(50%);
+            -webkit-transform: translateY(50%);
+            -moz-transform: translateY(50%);
+            -ms-transform: translateY(50%);
+            -o-transform: translateY(50%);
+
+        }
+
+
+        100%{
+
+            opacity: 1;
+            transform: translateY(0%);
+            -webkit-transform: translateY(0%);
+            -moz-transform: translateY(0%);
+            -ms-transform: translateY(0%);
+            -o-transform: translateY(0%);
+        }
+        }
+
+
+
+    {%end_scope_css%}
+</style>
+
+{%end_require_css%}

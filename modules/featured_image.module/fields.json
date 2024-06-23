@@ -1,0 +1,78 @@
+[
+{
+  "name" : "header_text",
+  "label" : "Header Text",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Header Text"
+},
+{
+  "name" : "header_sub_text",
+  "label" : "Header Sub Text",
+  "required" : false,
+  "locked" : false,
+  "validation_regex" : "",
+  "allow_new_line" : false,
+  "show_emoji_picker" : false,
+  "type" : "text",
+  "default" : "Header Sub Text"
+},
+{
+  "name": "featured_image",
+  "label": "Featured image",
+  "required": false,
+  "type": "backgroundimage",
+  "default": {
+      "src": "{{ get_asset_url('/tshiamiso_astronauts_theme/images/2_The Great Debate Mobile Phones and Middle Scholars Tshiamiso Astronauts (1).png') }}",
+      "background_position": "MIDDLE_CENTER",
+      "background_size": "cover"
+  }
+
+},
+
+
+{
+  "type": "group",
+  "name": "nav_button",
+  "label": "Header Navigation Button",
+  "expanded": false,
+  "children": [
+
+        {
+          "name" : "button_name",
+          "label" : "Button Name",
+          "required" : false,
+          "locked" : false,
+          "validation_regex" : "",
+          "allow_new_line" : false,
+          "show_emoji_picker" : false,
+          "type" : "text",
+          "default" : "Contact Us"
+        },
+      
+        {
+          "name" : "button_link",
+          "display_width" : null,
+          "label" : "Button Link",
+          "required" : false,
+          "locked" : false,
+          "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+          "show_advanced_rel_options" : true,
+          "type" : "link",
+          "default" : {
+            "url" : {
+              "content_id" : null,
+              "type" : "EXTERNAL",
+              "href" : ""
+            },
+            "open_in_new_tab" : false,
+            "no_follow" : false
+          }
+        }
+   ]
+  }
+]

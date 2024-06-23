@@ -1,0 +1,381 @@
+<!-- module html  -->
+
+<div id="footer-main-container">
+
+    <div id="footer-container">
+
+        <div id="coloum_one">
+            <a href="https://www.tshiamisoastronauts.org/">
+                {% if module.footer_nav.logo_icon.src %}
+                {% set sizeAttrs = 'width="{{ module.footer_nav.logo_icon.width|escape_attr }}" height="{{ module.footer_nav.logo_icon.height|escape_attr }}"' %}
+                {% if module.footer_nav.logo_icon.size_type == 'auto' %}
+                    {% set sizeAttrs = 'width="{{ module.footer_nav.logo_icon.width|escape_attr }}" height="{{ module.footer_nav.logo_icon.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                {% elif module.footer_nav.logo_icon.size_type == 'auto_custom_max' %}
+                    {% set sizeAttrs = 'width="{{ module.footer_nav.logo_icon.max_width|escape_attr }}" height="{{ module.footer_nav.logo_icon.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                 {% set loadingAttr = module.footer_nav.logo_icon.loading != 'disabled' ? 'loading="{{ module.footer_nav.logo_icon.loading|escape_attr }}"' : '' %}
+                <img id="footer-logo-icon" src="{{ module.footer_nav.logo_icon.src|escape_url }}" alt="{{ module.footer_nav.logo_icon.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                {% endif %}
+            </a>
+    
+        </div>
+    
+    
+        <div id="coloum_four">
+    
+            <div id="socials">
+                <h4>Get In Touch</h4>
+        
+                <div id="social-icons">
+                    {% if module.footer_socials_icons.facebook_icon.src %}
+                    {% set sizeAttrs = 'width="{{ module.footer_socials_icons.facebook_icon.width|escape_attr }}" height="{{ module.footer_socials_icons.facebook_icon.height|escape_attr }}"' %}
+                    {% if module.footer_socials_icons.facebook_icon.size_type == 'auto' %}
+                        {% set sizeAttrs = 'width="{{ module.footer_socials_icons.facebook_icon.width|escape_attr }}" height="{{ module.footer_socials_icons.facebook_icon.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                    {% elif module.footer_socials_icons.facebook_icon.size_type == 'auto_custom_max' %}
+                        {% set sizeAttrs = 'width="{{ module.footer_socials_icons.facebook_icon.max_width|escape_attr }}" height="{{ module.footer_socials_icons.facebook_icon.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                    {% endif %}
+                    {% set loadingAttr = module.footer_socials_icons.facebook_icon.loading != 'disabled' ? 'loading="{{ module.footer_socials_icons.facebook_icon.loading|escape_attr }}"' : '' %}
+    
+                        {% set href = module.footer_socials_icons.facebook_link.url.href %}
+                        {% if module.footer_socials_icons.facebook_link.url.type is equalto "EMAIL_ADDRESS" %}
+                            {% set href = "mailto:" + href %}
+                        {% endif %}
+                        <a href="{{ href|escape_url }}"
+                            {% if module.footer_socials_icons.facebook_link.open_in_new_tab %}target="_blank"{% endif %}
+                            {% if module.footer_socials_icons.facebook_link.rel %}rel="{{ module.footer_socials_icons.facebook_link.rel|escape_attr }}"{% endif %}
+                            >
+                        <img src="{{ module.footer_socials_icons.facebook_icon.src|escape_url }}" alt="{{ module.footer_socials_icons.facebook_icon.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                        </a>
+    
+                    {% endif %}
+        
+    
+    
+                    {% if module.footer_socials_icons.linkedin_icon.src %}
+                    {% set sizeAttrs = 'width="{{ module.footer_socials_icons.linkedin_icon.width|escape_attr }}" height="{{ module.footer_socials_icons.linkedin_icon.height|escape_attr }}"' %}
+                    {% if module.footer_socials_icons.linkedin_icon.size_type == 'auto' %}
+                        {% set sizeAttrs = 'width="{{ module.footer_socials_icons.linkedin_icon.width|escape_attr }}" height="{{ module.footer_socials_icons.linkedin_icon.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                    {% elif module.footer_socials_icons.linkedin_icon.size_type == 'auto_custom_max' %}
+                        {% set sizeAttrs = 'width="{{ module.footer_socials_icons.linkedin_icon.max_width|escape_attr }}" height="{{ module.footer_socials_icons.linkedin_icon.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                    {% endif %}
+                    {% set loadingAttr = module.footer_socials_icons.linkedin_icon.loading != 'disabled' ? 'loading="{{ module.footer_socials_icons.linkedin_icon.loading|escape_attr }}"' : '' %}
+                    
+                    {% set href = module.footer_socials_icons.linkedin_link.url.href %}
+                    {% if module.footer_socials_icons.linkedin_link.url.type is equalto "EMAIL_ADDRESS" %}
+                        {% set href = "mailto:" + href %}
+                    {% endif %}
+                    <a href="{{ href|escape_url }}"
+                        {% if module.footer_socials_icons.linkedin_link.open_in_new_tab %}target="_blank"{% endif %}
+                        {% if module.footer_socials_icons.linkedin_link.rel %}rel="{{ module.footer_socials_icons.linkedin_link.rel|escape_attr }}"{% endif %}
+                        >
+                        <img src="{{ module.footer_socials_icons.linkedin_icon.src|escape_url }}" alt="{{ module.footer_socials_icons.linkedin_icon.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                    </a>
+                    {% endif %}
+        
+                    {% if module.footer_socials_icons.twitter_icon.src %}
+                    {% set sizeAttrs = 'width="{{ module.footer_socials_icons.twitter_icon.width|escape_attr }}" height="{{ module.footer_socials_icons.twitter_icon.height|escape_attr }}"' %}
+                    {% if module.footer_socials_icons.twitter_icon.size_type == 'auto' %}
+                        {% set sizeAttrs = 'width="{{ module.footer_socials_icons.twitter_icon.width|escape_attr }}" height="{{ module.footer_socials_icons.twitter_icon.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                    {% elif module.footer_socials_icons.twitter_icon.size_type == 'auto_custom_max' %}
+                        {% set sizeAttrs = 'width="{{ module.footer_socials_icons.twitter_icon.max_width|escape_attr }}" height="{{ module.footer_socials_icons.twitter_icon.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                    {% endif %}
+                    {% set loadingAttr = module.footer_socials_icons.twitter_icon.loading != 'disabled' ? 'loading="{{ module.footer_socials_icons.twitter_icon.loading|escape_attr }}"' : '' %}
+    
+                    {% set href = module.footer_socials_icons.twitter_link.url.href %}
+                    {% if module.footer_socials_icons.twitter_link.url.type is equalto "EMAIL_ADDRESS" %}
+                        {% set href = "mailto:" + href %}
+                    {% endif %}
+                    <a href="{{ href|escape_url }}"
+                        {% if module.footer_socials_icons.twitter_link.open_in_new_tab %}target="_blank"{% endif %}
+                        {% if module.footer_socials_icons.twitter_link.rel %}rel="{{ module.footer_socials_icons.twitter_link.rel|escape_attr }}"{% endif %}
+                        >
+                        <img src="{{ module.footer_socials_icons.twitter_icon.src|escape_url }}" alt="{{ module.footer_socials_icons.twitter_icon.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                    </a>
+                    {% endif %}
+        
+        
+                    {% if module.footer_socials_icons.instagram_icon.src %}
+                    {% set sizeAttrs = 'width="{{ module.footer_socials_icons.instagram_icon.width|escape_attr }}" height="{{ module.footer_socials_icons.instagram_icon.height|escape_attr }}"' %}
+                    {% if module.footer_socials_icons.instagram_icon.size_type == 'auto' %}
+                        {% set sizeAttrs = 'width="{{ module.footer_socials_icons.instagram_icon.width|escape_attr }}" height="{{ module.footer_socials_icons.instagram_icon.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                    {% elif module.footer_socials_icons.instagram_icon.size_type == 'auto_custom_max' %}
+                        {% set sizeAttrs = 'width="{{ module.footer_socials_icons.instagram_icon.max_width|escape_attr }}" height="{{ module.footer_socials_icons.instagram_icon.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+                    {% endif %}
+                    {% set loadingAttr = module.footer_socials_icons.instagram_icon.loading != 'disabled' ? 'loading="{{ module.footer_socials_icons.instagram_icon.loading|escape_attr }}"' : '' %}
+    
+                    {% set href = module.footer_socials_icons.instagram_link.url.href %}
+                    {% if module.footer_socials_icons.instagram_link.url.type is equalto "EMAIL_ADDRESS" %}
+                        {% set href = "mailto:" + href %}
+                    {% endif %}
+                    <a href="{{ href|escape_url }}"
+                        {% if module.footer_socials_icons.instagram_link.open_in_new_tab %}target="_blank"{% endif %}
+                        {% if module.footer_socials_icons.instagram_link.rel %}rel="{{ module.footer_socials_icons.instagram_link.rel|escape_attr }}"{% endif %}
+                        >
+                        <img src="{{ module.footer_socials_icons.instagram_icon.src|escape_url }}" alt="{{ module.footer_socials_icons.instagram_icon.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div id="coloum_three">
+            <div id="footer_nav">
+                <ul>
+                <h4>Pages</h4>
+        
+                    {% for item in module.footer_nav_tabs %}
+                    {% set href = item.footer_nav_tab_link.url.href %}
+                    {% if item.footer_nav_tab_link.url.type is equalto "EMAIL_ADDRESS" %}
+                        {% set href = "mailto:" + href %}
+                    {% endif %}
+                    <li>
+                        <a href="{{ href|escape_url }}"
+                        {% if item.footer_nav_tab_link.open_in_new_tab %}target="_blank"{% endif %}
+                        {% if item.footer_nav_tab_link.rel %}rel="{{ item.footer_nav_tab_link.rel|escape_attr }}"{% endif %}
+                        >
+                        {{ item.footer_nav_tab_name }}
+                    </a></li>
+                     {% endfor %}
+                </ul>
+            </div>
+        
+        </div>
+    
+    
+        <div id="coloum_two">
+            <div id="footer-contact-us">
+                <ul>
+                    <h4>Contact Info</h4>
+                    <li> <b>Address : </b> {{ module.footer_contact_info.address_info }}</li>
+                    <li> <b>Phone Number : </b>{{ module.footer_contact_info.phone_info }} </li>
+                    <li> <b>Email Address : </b>{{ module.footer_contact_info.email_address_info }}</li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+
+    <div id="Rights-reserved-container">
+        <p>{{ module.footer_rights_reserved.rights_reserved }}</p>
+    </div>
+</div>
+
+
+
+<!--=======================================================================================================================
+=====================================================CSS CODE=====================================================================
+==========================================================================================================================-->
+
+{% require_css %}
+<style>
+
+    
+{% set primary_color = theme.brand_color.primary_color.color %}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+
+--li-font : 1rem;
+--theme-font-family :"Montserrat", sans-serif;
+--a-color : white;
+}
+
+
+#footer-container{
+
+    display: grid;
+    grid-template-columns: repeat(4 , 1fr);
+    padding: 2rem 10rem;
+    gap: 2rem;
+    font-family: var(--theme-font-family);
+
+
+}
+
+
+ #footer-container #coloum_three{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#footer-container #coloum_one {
+    display: flex;
+    align-items: center;
+}
+
+#footer-container div {
+    padding: 1rem;
+}
+
+#footer-container #coloum_four h4{
+    padding-left: 1rem;
+}
+
+
+
+#footer-container #footer-logo-icon{
+
+    width: 110px;
+    height: 110px;
+}
+
+
+#footer-container #footer_nav ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0rem;
+
+
+}
+
+#footer-container #footer_nav ul h4{
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+}
+
+#footer-container #footer_nav li a{
+    font-size: var(--a-color);
+    text-decoration: none;
+    color: black;
+
+}
+
+#footer-container #footer-contact-us h4{
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+}
+
+
+#footer-container #footer-contact-us ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0rem;
+}
+
+#footer-container #socials{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#footer-container #socials #social-icons{
+    display: flex;
+    gap: 1rem;
+}
+
+#footer-container #socials #social-icons img{
+
+    transition: all 0.3s;
+}
+
+#footer-container #socials #social-icons img:hover{
+    transform: scale(1.1);
+}
+
+
+#footer-container #socials h4{
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+}
+
+#footer-container #socials img{
+
+    width: 30px;
+    height: 30px;
+}
+
+#Rights-reserved-container p{
+
+    display: flex;
+    align-items: center ;
+    text-align: center !important;
+    justify-content: center;
+    padding: 1rem 10rem;
+    font-family: var(--theme-font-family);
+    font-size: var(--li-font);
+    color : white !important;
+
+    background-color: {{primary_color}};
+}
+
+
+
+{% if module.nav_tab_hover_effect.tab_hover_effect  == 'Bottom-Border' %}
+        
+        #coloum_three #footer_nav ul li a:hover{
+                border-bottom: 5px solid {{primary_color}};
+        }
+{% else %}
+        #coloum_three #footer_nav ul li a:hover{
+                color: {{primary_color}};         
+        }
+{% endif %}
+
+
+
+@media only screen and (max-width: 1480px) {
+  #footer-container {
+
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  #footer-container div{
+    padding: 0rem;
+  }
+
+  #footer-container #coloum_four h4{
+
+    padding-left: 0rem;
+  }
+  
+}
+
+@media only screen and (max-width: 640px) {
+
+    #footer-container {
+
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    }
+
+    #footer-container div ,  #footer-container #coloum_two h4{
+        display: flex;
+        justify-content: center;
+        align-self: center;
+    }
+
+    #footer-container #coloum_two #footer-contact-us ul li{
+        text-align: center;
+    }
+
+    #footer-container #coloum_three #footer_nav ul li , #footer-container #coloum_three #footer_nav h4{
+
+        text-align: center;
+
+    }
+
+    #footer-container #coloum_four{
+        text-align: center;
+    }
+
+
+
+}
+
+@media only screen and (max-width: 640px) {
+
+#footer-container {
+
+    padding: 2rem;
+}
+
+}
+
+</style>
+{% end_require_css %}

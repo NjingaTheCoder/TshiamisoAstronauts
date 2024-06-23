@@ -1,0 +1,155 @@
+[
+
+  {
+    "type": "group",
+    "name": "side_text_tings",
+    "label": "Side Text Tings",
+    "expanded": false,
+    "children": [
+      {
+        "name" : "side_header_text",
+        "label" : "Side Header Text",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "Side Header Text"
+      },
+      {
+        "name": "side_sub_text",
+        "label": "side Sub Text",
+        "required": false,
+        "locked": false,
+        "type": "richtext",
+        "inline_help_text": "",
+        "help_text": "",
+        "default": null 
+      }
+
+    ]
+
+  }     
+,{
+    "type": "group",
+    "name": "side_image_tings",
+    "label": "Side Image Tings",
+    "expanded": false,
+    "children": [
+        {
+          "name" : "side_image",
+          "label" : "Side Image",
+          "required" : true,
+          "locked" : false,
+          "responsive" : true,
+          "resizable" : false,
+          "show_loading" : false,
+          "type" : "image",
+          "default" : {
+            "size_type" : "exact",
+            "src" : "../../images/screenshot.png",
+            "alt" : "card",
+            "width" : 128,
+            "height" : 128
+          }
+        },
+          {
+
+            "name" : "side_image_position",
+            "label" : "Side Image Position",
+            "required" : false,
+            "locked" : false,
+            "multiple":"false",
+            "display" : "select",
+            "choices" : [ [ "Left", "left" ], [ "Right", "right" ] ],
+            "type" : "choice",
+            "default" : "Left"
+          }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "side_button",
+    "label": "Side Button",
+    "expanded": false,
+    "children": [
+  
+          {
+            "name" : "button_name",
+            "label" : "Button Name",
+            "required" : false,
+            "locked" : false,
+            "validation_regex" : "",
+            "allow_new_line" : false,
+            "show_emoji_picker" : false,
+            "type" : "text",
+            "default" : "Contact Us"
+          },
+        
+          {
+            "name" : "button_link",
+            "display_width" : null,
+            "label" : "Button Link",
+            "required" : false,
+            "locked" : false,
+            "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+            "show_advanced_rel_options" : true,
+            "type" : "link",
+            "default" : {
+              "url" : {
+                "content_id" : null,
+                "type" : "EXTERNAL",
+                "href" : ""
+              },
+              "open_in_new_tab" : false,
+              "no_follow" : false
+            }
+          },
+          {
+
+            "name" : "button_state",
+            "label" : "Button State",
+            "required" : false,
+            "locked" : false,
+            "multiple":"false",
+            "display" : "select",
+            "choices" : [ [ "On", "on" ], [ "Off", "off" ] ],
+            "type" : "choice",
+            "default" : "On"
+          }
+     ]
+    },
+
+    {
+      "type": "group",
+      "name": "side_background_tings",
+      "label": "Side Color Tings",
+      "expanded": false,
+      "children": [
+        {
+          "name" : "side_background_color",
+          "label" : "Side Background color",
+          "required" : false,
+          "locked" : false,
+          "type" : "color",
+          "default" : {
+             "color" : "#0a8a9d",
+             "opacity" : 100
+          }
+        },
+        {
+          "name" : "side_text_color",
+          "label" : "Side Text color",
+          "required" : false,
+          "locked" : false,
+          "type" : "color",
+          "default" : {
+             "color" : "#fffffff",
+             "opacity" : 100
+          }
+        }
+      ]
+    }
+
+  ]

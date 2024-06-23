@@ -1,0 +1,97 @@
+<!-- module html  -->
+<!-- module html  -->
+
+<div id="who-we-are-container">
+    <h2 id="who-we-header">{{ module.who_we_are_header_text }}</h2>
+    <p id="who-we-are-text">{{ module.who_we_are_text }}</p>
+    {% if module.icon_image.src %}
+	{% set sizeAttrs = 'width="{{ module.icon_image.width|escape_attr }}" height="{{ module.icon_image.height|escape_attr }}"' %}
+	{% if module.icon_image.size_type == 'auto' %}
+		{% set sizeAttrs = 'width="{{ module.icon_image.width|escape_attr }}" height="{{ module.icon_image.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+	{% elif module.icon_image.size_type == 'auto_custom_max' %}
+		{% set sizeAttrs = 'width="{{ module.icon_image.max_width|escape_attr }}" height="{{ module.icon_image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+	{% endif %}
+	 {% set loadingAttr = module.icon_image.loading != 'disabled' ? 'loading="{{ module.icon_image.loading|escape_attr }}"' : '' %}
+	<img id="who-we-are-image" src="{{ module.icon_image.src|escape_url }}" alt="" {{ loadingAttr }} {{ sizeAttrs }}>
+    {% endif %}
+</div>
+
+{%require_css%}
+
+<style>
+
+  {%scope_css%}
+
+  
+  :root {
+    --h2-font-size: 4rem;
+  }
+
+
+  #who-we-are-container{
+
+      font-family: var(--theme-font-family);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem 10rem;
+      color: {{ module.background_tings.text_color.color }};
+      background-color: {{ module.background_tings.background_color.color }};
+
+  }
+
+  #who-we-header{
+    opacity: 0;
+    font-size: 3rem ;
+    text-align: center;
+  }
+
+  #who-we-are-image{
+    opacity: 0;
+    max-width: 90px;
+    display: block;
+  }
+
+  #who-we-are-text{
+    opacity: 0;
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+
+  #who-we-header.slide , #who-we-are-image.slide , #who-we-are-text.slide{
+    animation:  SlideIn .9s linear 300ms forwards;
+    -webkit-animation:  SlideIn .9s linear 300ms forwards;
+    }
+
+  @keyframes SlideIn{
+
+      0%{
+          opacity: 0;
+          transform: translateY(50%);
+          -webkit-transform: translateY(50%);
+          -moz-transform: translateY(50%);
+          -ms-transform: translateY(50%);
+          -o-transform: translateY(50%);
+
+      }
+
+
+      100%{
+
+          opacity: 1;
+          transform: translateY(0%);
+          -webkit-transform: translateY(0%);
+          -moz-transform: translateY(0%);
+          -ms-transform: translateY(0%);
+          -o-transform: translateY(0%);
+      }
+      }
+
+
+
+  {%end_scope_css%}
+</style>
+
+{%end_require_css%}

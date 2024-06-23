@@ -1,0 +1,115 @@
+<!-- module html  -->
+
+{{content_by_id(item.page_field) }}
+<div id="blog-container">
+  <ul id="blog-grid">
+    {% for item in module.blogs %}
+  
+    {% set my_content =  content_by_id(item.page_field) %}
+    <li class="blog-listing">
+      <img class="blog-image" src="{{my_content.featured_image}}" alt="{{ my_content.name }}" />
+      <a target=”_blank”  class="blog-title" href="{{ my_content.absolute_url }}">{{my_content.title}}</a>
+    </li>
+    {% endfor %}
+  
+  </ul>
+</div>
+
+
+
+{%require_css%}
+
+<style>
+
+{% set primary_color = theme.brand_color.primary_color.color %}
+    {%scope_css%}
+
+    #blog-container{
+        font-family: var(--theme-font-family);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5rem 10rem;
+        padding-right: 12.5rem;
+        padding-top: 2rem;
+    }
+
+    #blog-grid{
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(3 , 1fr);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .blog-listing{
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      gap: 2rem;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      transition: all .3s;
+    }
+
+
+
+    .blog-image{
+
+      width: 380px;
+      height: 250px;
+    }
+
+    .blog-title{
+      text-decoration: none;
+      color: black;
+      font-weight: 600;
+      font-size: 1.5rem;
+      padding: 2rem;
+
+
+    }
+
+ 
+
+    .blog-listing:hover{
+
+      background-color: rgb(0, 0, 0 , 0.1);
+      box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.5), 0 8px 30px 0 rgba(0, 0, 0, 0.10);
+    }
+
+    .blog-listing.slide{
+
+      animation:  SlideIn .9s linear 300ms forwards;
+      -webkit-animation:  SlideIn .9s linear 300ms forwards;
+    }
+
+
+    @keyframes SlideIn{
+
+      0%{
+          opacity: 0;
+          transform: translateY(50%);
+          -webkit-transform: translateY(50%);
+          -moz-transform: translateY(50%);
+          -ms-transform: translateY(50%);
+          -o-transform: translateY(50%);
+
+      }
+      
+
+      100%{
+          
+          opacity: 1;
+          transform: translateY(0%);
+          -webkit-transform: translateY(0%);
+          -moz-transform: translateY(0%);
+          -ms-transform: translateY(0%);
+          -o-transform: translateY(0%);
+      }
+      }
+
+    {%end_scope_css%}
+</style>
+
+{%end_require_css%}

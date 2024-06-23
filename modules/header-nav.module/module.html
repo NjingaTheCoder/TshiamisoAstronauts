@@ -1,0 +1,562 @@
+<!-- module html  -->
+
+
+<!--=======================================================================================================================
+=====================================================MACRO CODE=====================================================================
+==========================================================================================================================-->
+
+
+{%macro addAnchorTag(data)%}
+  {% set href = module.contact_nav.donation_link.url.href %}
+  {% if module.contact_nav.donation_link.url.type is equalto "EMAIL_ADDRESS" %}
+    {% set href = "mailto:" + href %}
+  {% endif %}
+  <a id="donation_anchor" href="{{ href|escape_url }}"
+    {% if module.contact_nav.donation_link.open_in_new_tab %}target="_blank"{% endif %}
+    {% if module.contact_nav.donation_link.rel %}rel="{{ module.contact_nav.donation_link.rel|escape_attr }}"{% endif %}
+    >
+
+    {%if data == "image" %}
+      <img  src="{{module.contact_nav.donate_icon.src }}" alt="donation icon"> 
+    {% elif data == "pargraph" %}
+      <p>{{ module.contact_nav.donation_text }}</p>
+    {%endif%}
+  </a>
+{%endmacro%}
+
+{%macro addImageMarkUp(imageClass)%}
+
+    {%if imageClass == "contact" %}
+        {% if module.contact_nav.header_logo.src %}
+          {% set sizeAttrs = 'width="{{ module.contact_nav.header_logo.width|escape_attr }}"
+          height="{{ module.contact_nav.header_logo.height|escape_attr }}"' %}
+          {% if module.contact_nav.header_logo.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.contact_nav.header_logo.width|escape_attr }}" 
+            height="{{ module.contact_nav.header_logo.height|escape_attr }}"
+            style="max-width: 100%;
+              height: auto;"' %}
+          {% elif module.contact_nav.header_logo.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.contact_nav.header_logo.max_width|escape_attr }}" 
+            height="{{ module.contact_nav.header_logo.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+           {% set loadingAttr = module.contact_nav.header_logo.loading != 'disabled' ? 'loading="{{ module.contact_nav.header_logo.loading|escape_attr }}"' : '' %}
+
+
+          <a class="anchor" href="https://www.tshiamisoastronauts.org/">
+          <img 
+          class="{{imageClass}}"
+          id="{{imageClass}}"
+          src="{{ module.contact_nav.header_logo.src|escape_url }}"
+          alt="{{ module.contact_nav.header_logo.alt|escape_attr }}" 
+          {{ loadingAttr }} 
+          {{ sizeAttrs }}/>
+          </a>
+      {% endif %}
+
+    {% elif imageClass == "navigation" %}
+      
+      {% if module.header_nav.header_logo.src %} {% set sizeAttrs = 'width="{{
+        module.header_nav.header_logo.width|escape_attr }}" height="{{
+        module.header_nav.header_logo.height|escape_attr }}"' %} {% if
+        module.header_nav.header_logo.size_type == 'auto' %} {% set sizeAttrs =
+        'width="{{ module.header_nav.header_logo.width|escape_attr }}" height="{{
+        module.header_nav.header_logo.height|escape_attr }}" style="max-width: 100%;
+        height: auto;"' %} {% elif module.header_nav.header_logo.size_type ==
+        'auto_custom_max' %} {% set sizeAttrs = 'width="{{
+        module.header_nav.header_logo.max_width|escape_attr }}" height="{{
+        module.header_nav.header_logo.max_height|escape_attr }}" style="max-width:
+        100%; height: auto;"' %} {% endif %} {% set loadingAttr =
+        module.header_nav.header_logo.loading != 'disabled' ? 'loading="{{
+        module.header_nav.header_logo.loading|escape_attr }}"' : '' %}
+
+        <a class="anchor" href="https://www.tshiamisoastronauts.org/">
+        <img 
+        src="{{ module.header_nav.header_logo.src|escape_url }}"
+        alt="{{ module.header_nav.header_logo.alt|escape_attr }}"
+        class="{{imageClass}}"
+        id="{{imageClass}}"
+        {{
+        loadingAttr
+        }}
+        {{
+        sizeAttrs
+        }}
+        />
+        </a>
+
+      {% endif %}
+    {%endif%}
+
+
+
+{%endmacro%}
+
+
+<!--=======================================================================================================================
+=====================================================HTML CODE=====================================================================
+==========================================================================================================================-->
+
+
+<div class="main-nav-container" >
+
+    <div class="contact-container">
+      {{ addImageMarkUp("contact")}}
+          <ul>
+            <li>
+              <img src="{{module.contact_nav.phone_icon.src }}" alt="phone icon">
+              <p>{{module.contact_nav.phone_text }}</p>
+            </li>
+            <li>
+              <img src="{{module.contact_nav.email_icon.src }}" alt="email icon">
+              <p>{{module.contact_nav.email_text }}</p>
+            </li>
+            <li class="donations">
+              {{addAnchorTag("image")}}
+              {{addAnchorTag("pargraph")}}   
+            </li>
+          </ul>
+    </div>
+
+    <div id="navigation-container" class="navigation-container">
+
+      {{addImageMarkUp("navigation")}}
+      <nav>
+
+        <ul class="nav-list">
+
+
+          {% for item in module.header_nav.nav_tabs %}
+          {% set href = item.nav_tab_link.url.href %}
+          {% if item.nav_tab_link.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href = "mailto:" + href %}
+          {% endif %}
+          <li id="nav-link"> <a href="{{ href|escape_url }}"
+            {% if item.nav_tab_link.open_in_new_tab %}target="_blank"{% endif %}
+            {% if item.nav_tab_link.rel %}rel="{{ item.nav_tab_link.rel|escape_attr }}"{% endif %}
+            >
+            {{ item.nav_tab_name }}
+          </a></li>
+        {% endfor %}
+
+
+          <a id="navButton" class="navButton" href="{{ module.header_nav.nav_button.button_link }}" 
+            >{{ module.header_nav.nav_button.button_name }}</a
+          >
+          <div class="burger_menu">
+              {% if module.contact_nav.side_bar_nav_icon.src %}
+              {% set sizeAttrs = 'width="{{ module.contact_nav.side_bar_nav_icon.width|escape_attr }}" height="{{ module.contact_nav.side_bar_nav_icon.height|escape_attr }}"' %}
+              {% if module.contact_nav.side_bar_nav_icon.size_type == 'auto' %}
+                {% set sizeAttrs = 'width="{{ module.contact_nav.side_bar_nav_icon.width|escape_attr }}" height="{{ module.contact_nav.side_bar_nav_icon.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+              {% elif module.contact_nav.side_bar_nav_icon.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ module.contact_nav.side_bar_nav_icon.max_width|escape_attr }}" height="{{ module.contact_nav.side_bar_nav_icon.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+              {% endif %}
+              {% set loadingAttr = module.contact_nav.side_bar_nav_icon.loading != 'disabled' ? 'loading="{{ module.contact_nav.side_bar_nav_icon.loading|escape_attr }}"' : '' %}
+                <img id="menu_icon" class="menu-icons" src="{{ module.contact_nav.side_bar_nav_icon.src|escape_url }}" alt="{{ module.contact_nav.side_bar_nav_icon.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+              {% endif %}
+          </div>
+
+        </ul>
+
+        <ul class="sideBar">
+
+          {% if module.side_header_nav.close_icon.src %}
+          {% set sizeAttrs = 'width="{{ module.side_header_nav.close_icon.width|escape_attr }}" height="{{ module.side_header_nav.close_icon.height|escape_attr }}"' %}
+          {% if module.side_header_nav.close_icon.size_type == 'auto' %}
+            {% set sizeAttrs = 'width="{{ module.side_header_nav.close_icon.width|escape_attr }}" height="{{ module.side_header_nav.close_icon.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+          {% elif module.side_header_nav.close_icon.size_type == 'auto_custom_max' %}
+            {% set sizeAttrs = 'width="{{ module.side_header_nav.close_icon.max_width|escape_attr }}" height="{{ module.side_header_nav.close_icon.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+           {% set loadingAttr = module.side_header_nav.close_icon.loading != 'disabled' ? 'loading="{{ module.side_header_nav.close_icon.loading|escape_attr }}"' : '' %}
+          <img class="close-icon" src="{{ module.side_header_nav.close_icon.src|escape_url }}" alt="{{ module.side_header_nav.close_icon.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+
+
+            {% for item in module.header_nav.nav_tabs %}
+            {% set href = item.nav_tab_link.url.href %}
+            {% if item.nav_tab_link.url.type is equalto "EMAIL_ADDRESS" %}
+              {% set href = "mailto:" + href %}
+            {% endif %}
+            <li id="nav-link"> <a href="{{ href|escape_url }}"
+              {% if item.nav_tab_link.open_in_new_tab %}target="_blank"{% endif %}
+              {% if item.nav_tab_link.rel %}rel="{{ item.nav_tab_link.rel|escape_attr }}"{% endif %}
+              >
+              {{ item.nav_tab_name }}
+            </a></li>
+          {% endfor %}
+
+          <a id="navButtontwo" class="navButtontwo"  href="{{ module.header_nav.nav_button.button_link }}" 
+            >{{ module.header_nav.nav_button.button_name }}</a
+          >
+        </ul>
+        
+      </nav>
+    </div>
+</div>
+
+
+<!--=======================================================================================================================
+=====================================================CSS CODE=====================================================================
+==========================================================================================================================-->
+
+{% require_css %}
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+    {% set primary_color = theme.brand_color.primary_color.color %}
+
+    
+    :root {
+
+      --li-font : 1rem;
+      --theme-font-family :"Montserrat", sans-serif;
+      --a-color : white;
+    }
+
+
+    .navigation-container{
+        display: flex;
+        justify-content: space-between;
+        padding: 0rem 10rem;
+        align-items: center;
+        font-family: var(--theme-font-family);
+        font-weight: 600;
+        background-color: var(--a-color);
+        padding-top: 5rem;
+
+    }
+
+    .navigation-container #nav-link a{
+      text-decoration: none;
+      color: black;
+      transition: all 0.3s;
+      font-size: var(--li-font);
+    }
+
+
+    nav ul{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        gap: 2rem;
+        font-size: var(--li-font);
+
+    }
+
+    .navButton , .navButtontwo{
+      text-decoration: none;
+    }
+
+    nav ul .navButton , nav ul .navButtontwo{
+
+        padding: 1rem 2rem;
+        transition: all 0.3s;
+        border : 3px solid {{ primary_color }};
+        background-color :   {{ primary_color }};
+        color: var(--a-color) ;
+    }
+
+    nav ul .navButton:hover , nav ul .navButtontwo:hover{
+
+      background-color: white;
+      border: 3px solid {{primary_color}};
+      color : {{primary_color}};
+    }
+
+ 
+    nav .sideBar{
+      position: fixed;
+      top: 0;
+      right: 0;
+      padding-top: 5rem;
+      height: 100vh;
+      width: 50vw;
+      display: none;
+      flex-direction: column;
+      justify-content: flex-start  ;
+      align-items: center;
+      gap:3rem;
+      transition: all .4s;
+      overflow-y: scroll;
+      background-color: var(--a-color);
+      z-index: 1000;
+      padding-right: 2rem;
+    
+
+    }
+
+    
+    nav .sideBar.animateMe{
+      display: flex;
+      animation: sideBarSlider .8s linear forwards;
+     -webkit-animation: sideBarSlider .8s linear forwards;
+    }
+        
+    nav .sideBar.animateIn{     
+       display: flex;
+      animation: sideInBarSlider .8s linear forwards;
+     -webkit-animation: sideInBarSlider .8s linear forwards;
+    }
+    
+    nav .sideBar img{
+
+      width: 25px;
+      height: 25px;
+    }
+
+    nav ul .menu-icons{
+
+    width: 30px;
+    height: 30px;
+    }
+
+    nav ul .burger_menu{
+      display: none;
+    }
+
+
+    img{
+        width: 230px;
+        height: 80px;
+    }
+
+    .contact-container{
+      display: flex;
+      justify-content: space-between;
+      z-index: 999;
+      align-items: center;
+      position: fixed;
+      min-width: 100vw;
+      margin-bottom: 100px;
+      padding: 0.8rem 10rem;
+      padding-right: 11rem;
+      font-family: var(--theme-font-family);
+      transition: opacity 0.8s, height 0.8s;
+      font-size:0.8rem;
+      background-color: {{primary_color}};
+    }
+
+    .contact-container .contact{
+
+      width: 110px;
+      height: 35px;
+      display: none;
+    }
+
+    .contact-container .contact.animeDown{
+
+      display: flex;
+      animation: slider-down .9s linear forwards;
+     -webkit-animation: slider-down .9s linear forwards;
+    }
+    
+    .contact-container .contact.anime{
+      display: flex;
+      animation: slider .9s linear forwards;
+     -webkit-animation: slider .9s linear forwards;
+    }
+
+    .contact-container ul li img{
+
+      width: 20px;
+      height: 20px;
+    }
+
+    .contact-container #donation_anchor{
+      text-decoration: none;
+    }
+
+    .contact-container #donation_anchor img{
+      transition: all 0.3s;
+    }
+
+    .contact-container #donation_anchor img:hover{
+      transform: scale(1.1);
+    }
+
+    .contact-container #donation_anchor p{
+      transition: all 0.3s;
+    }
+
+    .contact-container #donation_anchor p:hover{
+      transform: scale(1.1);
+    }
+    .contact-container ul {
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: right;
+      align-items: center;
+    }
+
+    .contact-container ul li {
+      display: flex;
+      justify-content: center;
+      font-weight: 600;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .main-nav-container p{
+      font-size: 0.8rem;
+      color: var(--a-color) ;
+    }
+
+    .main-nav-container{
+      padding: 0px;
+      margin: 0px;
+
+    }
+
+    .contact-container ul .donations{
+
+      cursor: pointer;
+    }
+
+    .contact-container ul .donations img{
+      height: 27px;
+      width: 27px;
+
+    }
+
+    /**********************************************************Hubl conditional to display the hover effect******************************************************/
+
+    {% if module.header_nav.nav_tab_hover_effect.tab_hover_effect == 'Bottom-Border' %}
+        
+      .navigation-container #nav-link a:hover{
+              border-bottom: 5px solid {{primary_color}};
+      }
+   
+    {% else %}
+      .navigation-container #nav-link a:hover{
+              color: {{primary_color}};         
+      }
+
+    {% endif %}
+    
+
+    /******************************************************KeyFrame**************************************************/
+    @keyframes slider{
+
+    0%{
+       transform: translateY(100%);
+       opacity: 0;
+      -webkit-transform: translateY(100%);
+      -moz-transform: translateY(100%);
+      -ms-transform: translateY(100%);
+      -o-transform: translateY(100%);
+    }
+
+    50%{
+      transform: translateY(50%);
+      -webkit-transform: translateY(50%);
+      -moz-transform: translateY(50%);
+      -ms-transform: translateY(50%);
+      -o-transform: translateY(50%);
+    }
+
+    100%{
+      transform: translateY(0%);
+      -webkit-transform: translateY(0%);
+      -moz-transform: translateY(0%);
+      -ms-transform: translateY(0%);
+      -o-transform: translateY(0%);
+      opacity: 1;
+    }
+    }
+
+@keyframes slider-down{
+
+0%{
+   transform: translateY(0%);
+   opacity: 1;
+  -webkit-transform: translateY(0%);
+  -moz-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  -o-transform: translateY(0%);
+}
+
+50%{
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  -moz-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  -o-transform: translateY(50%);
+}
+
+100%{
+  transform: translateY(-100%);
+  -webkit-transform: translateY(100%);
+  -moz-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  -o-transform: translateY(100%);
+
+  opacity: 0;
+}
+}
+
+
+@keyframes sideBarSlider{
+
+0%{
+    
+    transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+}
+
+50%{
+  transform: translateX(50%);
+  -webkit-transform: translateX(50%);
+  -moz-transform: translateX(50%);
+  -ms-transform: translateX(50%);
+  -o-transform: translateX(50%);
+}
+
+100%{
+  transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+}
+}
+
+
+
+@keyframes sideInBarSlider{
+
+0%{
+  transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+}
+
+
+50%{
+  transform: translateX(50%);
+  -webkit-transform: translateX(50%);
+  -moz-transform: translateX(50%);
+  -ms-transform: translateX(50%);
+  -o-transform: translateX(50%);
+}
+
+100%{
+    
+    transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -o-transform: translateX(0%);
+}
+
+
+}
+  </style>
+  {% end_require_css %}
+</b>

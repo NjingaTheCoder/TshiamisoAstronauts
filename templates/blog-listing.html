@@ -1,0 +1,20 @@
+<!--
+    templateType: blog_listing
+    isAvailableForNewContent: true
+    label: Blog listing
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+
+
+{#Featured image module#}
+	
+{% module "module_17189665092431" path="/tshiamiso_astronauts_theme/modules/featured_image", label="featured_image" %}
+
+
+{#Blog Listing module#}
+
+{% module "module_17189661626042" path="/tshiamiso_astronauts_theme/modules/blog_listing", label="blog_listing" %}
+
+{% endblock body %}

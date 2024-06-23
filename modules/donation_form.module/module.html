@@ -1,0 +1,22 @@
+<!-- module html  -->
+
+<div id="donation-form">
+    {{ module.embed_field.embed_html }}
+</div>
+
+{%require_css%}
+
+<style>
+    {%scope_css%}
+
+        #donation-form{
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5rem;
+        }
+
+    {%end_scope_css%}
+</style>
+{%end_require_css%}

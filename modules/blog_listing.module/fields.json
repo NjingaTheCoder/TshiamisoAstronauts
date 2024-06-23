@@ -1,0 +1,26 @@
+[
+{
+  "name" : "blog",
+  "label" : "Blog",
+  "required" : false,
+  "locked" : false,
+  "type" : "blog",
+  "default" : 1234567890
+} ,
+
+{
+  "name" : "blog_number_field",
+  "label" : "Number of blogs",
+  "required" : false,
+  "locked" : false,
+  "display" : "slider",
+  "min" : 1,
+  "max" : 10,
+  "step" : 1,
+  "type" : "number",
+  "prefix": "",
+  "suffix" : "",
+  "default" : null,
+  "placeholder": "50"
+}
+]

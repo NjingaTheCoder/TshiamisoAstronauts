@@ -1,0 +1,254 @@
+<!-- module html  -->
+
+<div
+  id="side-image-and-text-container"
+  class="{{ module.side_image_tings.side_image_position }}"
+>
+  <div id="side-image-container">
+    {% if module.side_image_tings.side_image.src %} {% set sizeAttrs =
+    'width="{{ module.side_image_tings.side_image.width|escape_attr }}"
+    height="{{ module.side_image_tings.side_image.height|escape_attr }}"' %} {%
+    if module.side_image_tings.side_image.size_type == 'auto' %} {% set
+    sizeAttrs = 'width="{{ module.side_image_tings.side_image.width|escape_attr
+    }}" height="{{ module.side_image_tings.side_image.height|escape_attr }}"
+    style="max-width: 100%; height: auto;"' %} {% elif
+    module.side_image_tings.side_image.size_type == 'auto_custom_max' %} {% set
+    sizeAttrs = 'width="{{
+    module.side_image_tings.side_image.max_width|escape_attr }}" height="{{
+    module.side_image_tings.side_image.max_height|escape_attr }}"
+    style="max-width: 100%; height: auto;"' %} {% endif %} {% set loadingAttr =
+    module.side_image_tings.side_image.loading != 'disabled' ? 'loading="{{
+    module.side_image_tings.side_image.loading|escape_attr }}"' : '' %}
+    <img
+      id="side-image"
+      src="{{ module.side_image_tings.side_image.src|escape_url }}"
+      alt="{{ module.side_image_tings.side_image.alt|escape_attr }}"
+      {{
+      loadingAttr
+      }}
+      {{
+      sizeAttrs
+      }}
+    />
+  </div>
+
+  <div id="side-text-container">
+  <h2 id="side-header-text">{{ module.side_text_tings.side_header_text }}</h2>
+
+    <p id="side-text">{{ module.side_text_tings.side_sub_text }}</p>
+
+
+    {% if module.side_button.button_state == "On" %}
+    {% set href = module.side_button.button_link.url.href %} {% if
+      module.side_button.button_link.url.type is equalto "EMAIL_ADDRESS" %} {% set
+      href = "mailto:" + href %} {% endif %}
+      <a
+        id="side-button"
+        href="{{ href|escape_url }}"
+        {%
+        if
+        module.side_button.button_link.open_in_new_tab
+        %}target="_blank"
+        {%
+        endif
+        %}
+        {%
+        if
+        module.side_button.button_link.rel
+        %}rel="{{ module.side_button.button_link.rel|escape_attr }}"
+        {%
+        endif
+        %}
+      >
+        {{ module.side_button.button_name }}
+      </a>
+    {%endif%}
+
+    {% endif %}
+  </div>
+</div>
+
+{%require_css%}
+
+<style>
+
+    :root {
+
+    --h2-font-size-side : 2.5rem;
+    }
+      {% scope_css %}
+
+
+
+         #side-image-and-text-container #side-text-container #side-header-text{
+          font-size: var(--h2-font-size-side);
+         }
+
+
+
+
+         #side-image-and-text-container #side-text-container{
+          opacity: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          font-family: var(--theme-font-family);
+          color: {{ module.side_background_tings.side_text_color.color }};
+         }
+
+         #side-image-and-text-container #side-image-container{
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+         }
+
+
+         #side-image-and-text-container #side-image{
+
+          min-width: 450px;
+          min-height: 400px;
+          opacity: 0;
+         }
+
+          #side-image-and-text-container{
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 5rem 10rem;
+              padding-right: 11rem;
+              gap: 4rem;
+              width: 100vw;
+              background-color: {{ module.side_background_tings.side_background_color.color }};
+          }
+
+          .Left{
+              flex-direction: row;
+          }
+
+          .Right{
+              flex-direction: row-reverse;
+          }
+
+
+
+      #side-image-and-text-container #side-text-container #side-button {
+
+          font-weight: 600;
+          width: fit-content;
+          text-decoration: none;
+          padding: 1rem 2rem;
+          transition: all 0.3s;
+          background-color: {{ module.side_background_tings.side_text_color.color }};
+          border : 3px solid {{ module.side_background_tings.side_background_color.color }};
+          color:  {{ module.side_background_tings.side_background_color.color }};
+      }
+
+      #side-image-and-text-container #side-text-container #side-button:hover{
+          background-color : {{ module.side_background_tings.side_background_color.color }};
+          border: 3px solid {{ module.side_background_tings.side_text_color.color }};
+          color : {{ module.side_background_tings.side_text_color.color }};
+      }
+
+
+
+
+
+
+
+  {%if module.side_image_tings.side_image_position == 'Left'%}
+      #side-image-and-text-container #side-image.fade-in {
+          animation:  SlideOut .9s linear 300ms forwards;
+          -webkit-animation:  SlideOut  .9s linear 300ms forwards;
+      }
+  {%elif module.side_image_tings.side_image_position == 'Right'%}
+     #side-image-and-text-container #side-image.fade-in {
+          animation:  Slide .9s linear 300ms forwards;
+          -webkit-animation:  Slide  .9s linear 300ms forwards;
+      }
+  
+  {%endif%}
+
+  #side-image-and-text-container #side-text-container.fade-in {
+    animation:  fadeIn .9s linear 300ms forwards;
+    -webkit-animation:  fadeIn  .9s linear 300ms forwards;
+  }
+
+
+  @keyframes fadeIn {
+    0%{
+    opacity: 0;
+    transform: translateY(50%);
+    -webkit-transform: translateY(50%);
+    -moz-transform: translateY(50%);
+    -ms-transform: translateY(50%);
+    -o-transform: translateY(50%);
+
+    }
+    
+
+    100%{
+        opacity: 1;
+        transform: translateY(0%);
+        -webkit-transform: translateY(0%);
+        -moz-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+        -o-transform: translateY(0%);
+    }
+  }  
+
+  
+@keyframes Slide{
+
+0%{
+  opacity: 0;
+  transform: translateX(50%);
+  -webkit-transform: translateX(50%);
+  -moz-transform: translateX(50%);
+  -ms-transform: translateX(50%);
+  -o-transform: translateX(50%);
+
+}
+
+
+100%{
+  
+  opacity: 1;
+  transform: translateX(0%);
+  -webkit-transform: translateX(0%);
+  -moz-transform: translateX(0%);
+  -ms-transform: translateX(0%);
+}
+
+}
+
+@keyframes SlideOut{
+
+0%{
+  opacity: 0;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+
+}
+
+
+100%{
+  
+  opacity: 1;
+  transform: translateX(0%);
+  -webkit-transform: translateX(0%);
+  -moz-transform: translateX(0%);
+  -ms-transform: translateX(0%);
+}
+
+}
+
+
+
+  {% end_scope_css %}
+</style>
+
+{%end_require_css%}

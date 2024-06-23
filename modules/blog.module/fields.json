@@ -1,0 +1,28 @@
+[
+  
+  {
+    "type": "group",
+    "name": "blogs",
+    "label": "Blogs",
+    "occurrence" : {
+      "min" : 1,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : 1
+    },
+    "expanded": false,
+    "children": [
+        
+      {
+        "name" : "page_field",
+        "label" : "Blog",
+        "help_text" : "Pulls data from the selected page.",
+        "required" : false,
+        "locked" : false,
+        "placeholder" : "Page to pull from",
+        "type" : "page",
+        "default" : null
+      }
+    ]
+  }
+]

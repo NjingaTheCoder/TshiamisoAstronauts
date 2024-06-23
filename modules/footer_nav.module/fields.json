@@ -1,0 +1,307 @@
+[
+    {
+        "type": "group",
+        "name": "footer_nav",
+        "label": "Footer Navigation",
+        "expanded": false,
+        "children": [
+    
+          {
+            "name" : "logo_icon",
+            "label" : "Logo Icon",
+            "required" : true,
+            "locked" : false,
+            "responsive" : true,
+            "resizable" : false,
+            "show_loading" : false,
+            "type" : "image",
+            "default" : {
+              "size_type" : "exact",
+              "src" : "../../images/logo_head.png",
+              "alt" : "Logo icon",
+              "width" : 128,
+              "height" : 128
+            }
+          }
+        ]
+      },
+      {
+        "type": "group",
+        "name": "footer_nav_tabs",
+        "label": "Footer Navigation Tabs",
+        "expanded": false,
+        "occurrence" : {
+          "min" : 1,
+          "max" : null,
+          "sorting_label_field" : null,
+          "default" : 1
+        },
+        "children": [
+          {
+            "name" : "footer_nav_tab_name",
+            "label" : "Footer Navigation Tab Name",
+            "required" : false,
+            "locked" : false,
+            "validation_regex" : "",
+            "allow_new_line" : false,
+            "show_emoji_picker" : false,
+            "type" : "text",
+            "default" : "Navigation tab name"
+          },
+        
+          {
+            "name" : "footer_nav_tab_link",
+            "display_width" : null,
+            "label" : "Footer Navigation Tab Link",
+            "required" : false,
+            "locked" : false,
+            "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+            "show_advanced_rel_options" : true,
+            "type" : "link",
+            "default" : {
+              "url" : {
+                "content_id" : null,
+                "type" : "EXTERNAL",
+                "href" : ""
+              },
+              "open_in_new_tab" : false,
+              "no_follow" : false
+            }
+          }
+         ]
+    },
+    {
+      "type": "group",
+      "name": "nav_tab_hover_effect",
+      "label": "Navigation Tab Hover Effect",
+      "expanded": false,
+      "children": [
+            {
+              "name" : "tab_hover_effect",
+              "label" : "Tab Hover Effect",
+              "required" : false,
+              "locked" : false,
+              "multiple":"false",
+              "display" : "select",
+              "choices" : [ [ "Background-Color", "Background_Color" ], [ "Bottom-Border", " Border_Bottom" ] ],
+              "type" : "choice",
+              "default" : "Background-Color"
+            }
+      ]
+    }
+    ,{
+      "type": "group",
+      "name": "footer_contact_info",
+      "label": "Footer Contact Info",
+      "expanded": false,
+      "children": [
+    
+            {
+              "name" : "address_info",
+              "label" : "Address",
+              "required" : false,
+              "locked" : false,
+              "validation_regex" : "",
+              "allow_new_line" : false,
+              "show_emoji_picker" : false,
+              "type" : "text",
+              "default" : "Address"
+            },
+            {
+              "name" : "phone_info",
+              "label" : "Phone Number",
+              "required" : false,
+              "locked" : false,
+              "validation_regex" : "",
+              "allow_new_line" : false,
+              "show_emoji_picker" : false,
+              "type" : "text",
+              "default" : "Phone Number"
+            },
+            {
+              "name" : "email_address_info",
+              "label" : "Email Address",
+              "required" : false,
+              "locked" : false,
+              "validation_regex" : "",
+              "allow_new_line" : false,
+              "show_emoji_picker" : false,
+              "type" : "text",
+              "default" : "Email Address"
+            }
+      ]
+    },{
+    "type": "group",
+    "name": "footer_socials_icons",
+    "label": "Socials Icons",
+    "expanded": false,
+    "children": [
+
+      {
+        "name" : "facebook_icon",
+        "label" : "Facebook Logo Icon",
+        "required" : true,
+        "locked" : false,
+        "responsive" : true,
+        "resizable" : false,
+        "show_loading" : false,
+        "type" : "image",
+        "default" : {
+          "size_type" : "exact",
+          "src" : "../../images/facebook.png",
+          "alt" : "Facebook Logo icon",
+          "width" : 128,
+          "height" : 128
+        }
+      },{
+        "name" : "facebook_link",
+        "display_width" : null,
+        "label" : "Facebook Link",
+        "required" : false,
+        "locked" : false,
+        "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+        "show_advanced_rel_options" : true,
+        "type" : "link",
+        "default" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+      ,
+      {
+        "name" : "linkedin_icon",
+        "label" : "LinkedIn Logo Icon",
+        "required" : true,
+        "locked" : false,
+        "responsive" : true,
+        "resizable" : false,
+        "show_loading" : false,
+        "type" : "image",
+        "default" : {
+          "size_type" : "exact",
+          "src" : "../../images/linkedin.png",
+          "alt" : "LinkedIn Logo icon",
+          "width" : 128,
+          "height" : 128
+        }
+      },{
+        "name" : "linkedin_link",
+        "display_width" : null,
+        "label" : "LinkedIn Link",
+        "required" : false,
+        "locked" : false,
+        "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+        "show_advanced_rel_options" : true,
+        "type" : "link",
+        "default" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+      ,
+      {
+        "name" : "twitter_icon",
+        "label" : "Twitter Logo Icon",
+        "required" : true,
+        "locked" : false,
+        "responsive" : true,
+        "resizable" : false,
+        "show_loading" : false,
+        "type" : "image",
+        "default" : {
+          "size_type" : "exact",
+          "src" : "../../images/twitter(1).png",
+          "alt" : "Twitter Logo icon",
+          "width" : 128,
+          "height" : 128
+        }
+      },   {
+        "name" : "twitter_link",
+        "display_width" : null,
+        "label" : "Twitter Link",
+        "required" : false,
+        "locked" : false,
+        "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+        "show_advanced_rel_options" : true,
+        "type" : "link",
+        "default" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+      
+      ,
+      {
+        "name" : "instagram_icon",
+        "label" : "Instagram Logo Icon",
+        "required" : true,
+        "locked" : false,
+        "responsive" : true,
+        "resizable" : false,
+        "show_loading" : false,
+        "type" : "image",
+        "default" : {
+          "size_type" : "exact",
+          "src" : "../../images/social-media.png",
+          "alt" : "Instagram Logo icon",
+          "width" : 128,
+          "height" : 128
+        }
+      },
+      {
+        "name" : "instagram_link",
+        "display_width" : null,
+        "label" : "Instagram Link",
+        "required" : false,
+        "locked" : false,
+        "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG", "CALL_TO_ACTION", "PHONE_NUMBER", "WHATSAPP_NUMBER", "PAYMENT" ],
+        "show_advanced_rel_options" : true,
+        "type" : "link",
+        "default" : {
+          "url" : {
+            "content_id" : null,
+            "type" : "EXTERNAL",
+            "href" : ""
+          },
+          "open_in_new_tab" : false,
+          "no_follow" : false
+        }
+      }
+    ]
+  },{
+    "type": "group",
+    "name": "footer_rights_reserved",
+    "label": "Footer Rights Reserved",
+    "expanded": false,
+    "children": [
+
+      {
+        "name" : "rights_reserved",
+        "label" : "Rights Reserved",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text",
+        "default" : "Rights Reserved"
+      }
+    ]
+  }  
+          
+]

@@ -1,0 +1,74 @@
+[
+  
+  { "type": "group",
+   "name": "brand_color",
+   "label": "Brand colors",
+   "children": [
+
+        {
+          "name" : "primary_color",
+          "label" : "Primary color",
+          "required" : false,
+          "locked" : false,
+          "type" : "color",
+          "default" : {
+            "color" : "#e87c00",
+            "opacity" : 100
+          }
+          },        {
+            "name" : "secondary_color",
+            "label" : "Secondary color",
+            "required" : false,
+            "locked" : false,
+            "type" : "color",
+            "default" : {
+              "color" : "#0a8a9d",
+              "opacity" : 100
+            }
+          },
+          {
+            "name" : "light_primary_color",
+            "label" : "Light Primary color",
+            "required" : false,
+            "locked" : false,
+            "type" : "color",
+            "default" : {
+              "color" : "#c49486",
+              "opacity" : 100
+            }
+          },
+        {
+          "name" : "light_secondary_color",
+          "label" : "Light Secondary color",
+          "required" : false,
+          "locked" : false,
+          "type" : "color",
+          "default" : {
+            "color" : "#94c9d1",
+            "opacity" : 100
+          }
+        },
+        {
+          "name" : "dark_color",
+          "label" : "Dark color",
+          "required" : false,
+          "locked" : false,
+          "type" : "color",
+          "default" : {
+            "color" : "#081b22",
+            "opacity" : 100
+          }
+        },{
+          "type": "group",
+          "name": "brand_font",
+          "label": "Brand Font",
+          "children": [
+
+          ]
+        }
+  ]
+}
+
+
+
+]

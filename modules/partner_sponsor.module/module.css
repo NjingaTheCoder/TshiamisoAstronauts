@@ -1,0 +1,24 @@
+@media only screen and (max-width: 1260px) {
+    #sponsor-partner-grid{
+
+        grid-template-columns: repeat(2 , 1fr) !important;
+    }
+
+    #sponsor-partner-image{
+
+        max-width: 150px !important;
+        max-height: 50px !important;
+    }
+
+}
+
+
+
+
+@media only screen and (max-width: 640px) {
+    #sponsor-partner-grid{
+
+        grid-template-columns: repeat(1 , 1fr) !important;
+    }
+
+}

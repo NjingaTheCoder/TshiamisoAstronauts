@@ -1,0 +1,119 @@
+<!-- module html  -->
+
+<div
+  id="featured_image_container"
+  style="background-image:   linear-gradient(rgba(0, 0, 0, 0.127),rgba(0, 0, 0, 0.1)) , url({{ module.featured_image.src }})"
+>
+  <h1 id="header_text">{{ module.header_text }}</h1>
+  <p id="header_sub_text">{{ module.header_sub_text }}</p>
+  <a id="header_cta" href="{{ module.nav_button.button_link.url.href}}">
+    {{ module.nav_button.button_name }}
+  </a>
+</div>
+
+<!-- Css macro-->
+
+{%macro addAnimation(delay)%} {%endmacro%} {%require_css%}
+
+<style>
+
+  {% set primary_color = theme.brand_color.primary_color.color %}
+
+  :root {
+
+  --h1-font-size : 2.3rem;
+  --theme-font-family :"Montserrat", sans-serif;
+  --h1-color : white;
+  --button-font : 1rem;
+  --p-font : 1.2rem;
+  }
+
+
+  #featured_image_container{
+
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      font-size: var(--h1-font-size);
+      font-family: var(--theme-font-family);
+      color: var(--h1-color);
+      margin: 1rem  0rem;
+      padding: 7rem 10rem;
+      width: 100vw;
+      background-repeat: no-repeat;
+      background-position:{{ module.featured_image.background_position}} ;
+      background-size: {{ module.featured_image.background_size}} ;
+
+
+  }
+
+  #featured_image_container #header_text{
+      text-shadow: 2px 2px rgb(32, 32, 32 , 0.2);
+      padding-right: 20%;
+
+    animation: slide-up 0.9s ease-in-out forwards;
+
+  }
+
+  #featured_image_container  #header_sub_text{
+      text-shadow: 2px 2px rgb(32, 32, 32 , 0.2);
+      font-size: var(--p-font);
+      font-weight: bold;
+      padding-right: 30%;
+    animation: slide-up 0.8s ease-in-out forwards;
+
+
+  }
+
+   #featured_image_container #header_cta{
+
+          width: fit-content;
+          text-align: center;
+          margin-top: 0.5rem;
+          padding: 1rem 2.1rem;
+          font-weight: 600;
+          transition: all 0.3s;
+          font-size: var(--button-font) !important;
+          border : 3px solid {{ primary_color }};
+          background-color :   {{ primary_color }};
+          color: var(--a-color) ;
+          text-decoration: none;
+           animation: slide-up 0.7s ease-in-out forwards;
+
+
+      }
+
+      #featured_image_container #header_cta:hover{
+
+        background-color: rgb(0, 0, 0 , 0.1);
+        border: 3px solid ;
+        color : white;
+      }
+
+  /* Define the keyframes for the slide-up animation */
+  @keyframes slide-up {
+
+  0%{
+      opacity: 0;
+      transform: translateY(50%);
+      -webkit-transform: translateY(50%);
+      -moz-transform: translateY(50%);
+      -ms-transform: translateY(50%);
+      -o-transform: translateY(50%);
+
+  }
+
+
+  100%{
+
+      opacity: 1;
+      transform: translateY(0%);
+      -webkit-transform: translateY(0%);
+      -moz-transform: translateY(0%);
+      -ms-transform: translateY(0%);
+      -o-transform: translateY(0%);
+  }
+  }
+</style>
+
+{% end_require_css %}

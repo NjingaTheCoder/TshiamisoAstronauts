@@ -1,0 +1,135 @@
+@media only screen and (max-width: 1308px) {
+  #contact-us-container #contact-us-image-form {
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+#contact-us-container iframe{
+    width: 1100px !important;
+} 
+
+#contact-us-form .actions{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contact-us-form {
+
+    justify-content: center;
+}
+
+#contact-us-image{
+
+    width: 100vh !important;
+    height: 530px !important;
+}
+}
+
+
+@media only screen and (max-width: 1220px) {
+    #contact-us-container iframe{
+        width: 900px !important;
+    } 
+}
+@media only screen and (max-width: 1028px) {
+    #contact-us-image{
+
+
+    }
+
+}
+
+@media only screen and (max-width: 1020px) {
+    #contact-us-container iframe{
+        width: 700px !important;
+    } 
+}
+
+@media only screen and (max-width: 860px) {
+    #contact-us-image{
+
+        width: 70vh !important;
+        height: 530px !important;
+    }
+
+}
+
+@media only screen and (max-width: 820px) {
+    #contact-us-container iframe{
+        width: 500px !important;
+    } 
+}
+
+
+@media only screen and (max-width: 750px) {
+    #contact-us-image{
+
+        width: 60vh !important;
+        height: 530px !important;
+    }
+
+    #contact-us-form{
+
+        width: 500px !important;
+    }
+
+
+}
+
+@media only screen and (max-width: 660px) {
+    #contact-us-image{
+
+        width: 50vh !important;
+        height: 530px !important;
+    }
+
+    #contact-us-form{
+
+        width: 400px !important;
+    }
+
+
+}
+
+@media only screen and (max-width: 620px) {
+    #contact-us-container iframe{
+        width: 300px !important;
+    } 
+}
+
+
+
+@media only screen and (max-width: 530px) {
+    #contact-us-image{
+
+        width: 40vh !important;
+        height: 530px !important;
+    }
+
+    #contact-us-form{
+
+        width: 300px !important;
+    }
+
+}
+
+
+@media only screen and (max-width: 430px) {
+
+
+    #contact-us-form{
+
+        width: 250px !important;
+    }
+
+}
+
+
+@media only screen and (max-width: 370px) {
+    #contact-us-container iframe{
+        width: 270px !important;
+    } 
+}
+

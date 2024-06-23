@@ -1,0 +1,188 @@
+<!-- module html  -->
+
+
+<div id="super_detailed-events-container">
+
+ <hr>
+ <br>
+ <br>
+    
+<div id="detailed-events-container">
+
+
+    {% for item in module.detailed_event_name_date %} 
+
+    <div id="{{ item.event_name }}" class="detailed-events-cards">
+
+        <div class="detailed-events-date">
+
+            {% set eventDate = item.event_start | plus_time(1, 'days')|
+            format_date('EEE, yyyyy.MMM.dd')%}
+            <h3>
+                {%set dateSplit = eventDate |split(".")%}
+                {%set day= dateSplit[0] |split(",")%}
+                <span>{{day[0]}}</span>
+                <span>{{dateSplit[2]}}</span>
+            </h3>
+        </div>
+
+        <div class="detailed-events-description">
+
+            <p>{{dateSplit[1]}} {{dateSplit[2]}} @ {{item.event_start_time.event_time }} {{ item.event_start_time.time }} - {{item.event_End_time.event_time }} {{ item.event_End_time.time }}, {{ item.event_name }} </p>
+            <h3>{{ item.event_name }}</h3>
+
+            
+            {% set href = item.event_link.url.href %} {% if item.event_link.url.type is equalto
+            "EMAIL_ADDRESS" %} {% set href = "mailto:" + href %} {% endif %}
+            <a class="location-link"
+            href="{{ href|escape_url }}"
+            {%
+            if
+            item.event_link.open_in_new_tab
+            %}target="_blank"
+            {%
+            endif
+            %}
+            {%
+            if
+            item.event_link.rel
+            %}rel="{{ item.event_link.rel|escape_attr }}"
+            {%
+            endif
+            %}
+            >
+            {{item.event_location }}
+            </a>
+            <br>
+            <p>{{item.event_description }}</p>
+            <br>
+            {% set href = item.event_button.button_link.url.href %}
+            {% if item.event_button.button_link.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" + href %}
+            {% endif %}
+            <a class="register-button" href="{{ href|escape_url }}"
+                {% if item.event_button.button_link.open_in_new_tab %}target="_blank"{% endif %}
+                {% if item.event_button.button_link.rel %}rel="{{ item.event_button.button_link.rel|escape_attr }}"{% endif %}
+                >
+                {{ item.event_button.button_name }}
+            </a>
+        </div>
+    </div>
+    {% endfor%}
+
+</div>
+
+<br>
+<br>
+<hr>
+
+</div>
+
+
+{%require_css%}
+
+<style>
+
+{% set primary_color = theme.brand_color.primary_color.color %}
+ 
+  :root {
+    --h2-font-size: 2rem;
+  }
+
+  #super_detailed-events-container{
+    padding: 5rem 10rem;
+  }
+
+  #detailed-events-container{
+
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    justify-content: center;
+    padding: 0rem 10rem;
+    padding-bottom: 0rem;
+
+  }
+    
+    #detailed-events-container .detailed-events-cards{
+
+        opacity: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 3rem;
+        font-family: var(--theme-font-family);
+
+    }
+
+    #detailed-events-container .detailed-events-cards .detailed-events-date h3{
+        display: flex;
+        flex-direction: column;
+        font-size: 1.8rem;
+
+
+    }
+
+    #detailed-events-container .detailed-events-cards .detailed-events-description{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding-right: 15rem;
+    }
+
+    #detailed-events-container .detailed-events-cards .detailed-events-description .location-link{
+        color: #94c9d1;
+    }
+
+    #detailed-events-container .detailed-events-cards .detailed-events-description .register-button {
+
+    font-weight: 600;
+    width: fit-content;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    transition: all 0.3s;
+    background-color: {{ primary_color}};
+    border : 3px solid {{ primary_color}};
+    color: white;
+    }
+
+    #detailed-events-container .detailed-events-cards .detailed-events-description .register-button:hover{
+    background-color : white;
+    border: 3px solid {{ primary_color }};
+    color : {{ primary_color}};
+    }
+
+
+    #detailed-events-container .detailed-events-cards.slide{
+        animation:  SlideIn .9s linear 300ms forwards;
+        -webkit-animation:  SlideIn .9s linear 300ms forwards;
+    }
+
+@keyframes SlideIn{
+
+0%{
+    opacity: 0;
+    transform: translateY(50%);
+    -webkit-transform: translateY(50%);
+    -moz-transform: translateY(50%);
+    -ms-transform: translateY(50%);
+    -o-transform: translateY(50%);
+
+}
+ 
+
+100%{
+    
+    opacity: 1;
+    transform: translateY(0%);
+    -webkit-transform: translateY(0%);
+    -moz-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    -o-transform: translateY(0%);
+}
+}
+
+
+</style>
+
+{%end_require_css%}
+

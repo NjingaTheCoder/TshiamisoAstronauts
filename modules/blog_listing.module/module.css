@@ -1,0 +1,31 @@
+@media only screen and (max-width: 1340px) {
+  #blog-listing-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+
+  #blog-listing-grid .blog-listing-card .blog-listing-text-container {
+    text-align: center;
+    padding-top: 2rem;
+    align-items: center !important;
+  }
+
+
+  #blog-listing-grid .blog-listing-card .blog-listing-text-container{
+
+    align-items: center;
+
+  }
+
+  #blog-listing-grid .blog-listing-card{
+
+    align-items: center;
+
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  #blog-listing-grid {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+}

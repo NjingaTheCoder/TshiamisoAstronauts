@@ -1,0 +1,118 @@
+:root {
+  --background-color: #e87c00;
+}
+
+@media only screen and (max-width: 1268px) {
+  .main-nav-container .navigation-container nav .nav-list li,
+  .main-nav-container .navigation-container nav ul #navButton {
+    display: none;
+  }
+
+  .main-nav-container .navigation-container nav .burger_menu {
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 975px) {
+  .main-nav-container .contact-container {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .main-nav-container .contact-container ul {
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    transition: all 0.5s;
+  }
+
+  .main-nav-container .contact-container .anchor {
+    text-align: center;
+  }
+
+  .main-nav-container .contact-container .contact {
+    display: none;
+  }
+
+  .main-nav-container .navigation-container {
+    padding-top: 6rem;
+  }
+}
+
+@media only screen and (max-width: 870px) {
+  .main-nav-container nav .sideBar {
+    width: 50vw;
+  }
+}
+
+@media only screen and (max-width: 840px) {
+  .main-nav-container .contact-container {
+    padding-left: 5rem;
+    padding-right: 5rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main-nav-container .navigation-container {
+    justify-content: space-between;
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+@media only screen and (max-width: 844px) {
+  .main-nav-container nav .sideBar {
+    width: 100vw;
+  }
+}
+
+@media only screen and (max-width: 664px) {
+  .main-nav-container .navigation-container {
+    padding-top: 9rem;
+  }
+}
+
+@media only screen and (max-width: 524px) {
+  .main-nav-container .navigation-container {
+    padding-top: 12rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .main-nav-container .navigation-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .main-nav-container .navigation-container .burger_menu #menu_icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .main-nav-container .navigation-container #navigation {
+    width: 160px;
+    height: 50px;
+  }
+
+  .main-nav-container .navigation-container .sideBar .close-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .main-nav-container .contact-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .main-nav-container .contact-container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}

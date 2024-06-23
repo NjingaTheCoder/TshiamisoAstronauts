@@ -1,0 +1,18 @@
+<!--
+  templateType: section
+  label: Sub Featured Image
+  isAvailableForNewContent: true
+  screenshotPath: ../images/sub_featured.png
+  description: "A Background Image module followed by a richtext heading module , text and a button."
+-->
+
+{% dnd_section %} 
+    {% dnd_column offset=0, width=12 %} 
+        {%dnd_row %} 
+            {%dnd_module path="/tshiamiso_astronauts_theme/modules/sub_featured_image.module", 
+            offset=0,
+            width=12 %} 
+            {% end_dnd_module%} 
+        {% end_dnd_row %} 
+    {% end_dnd_column %}
+ {%end_dnd_section %}
